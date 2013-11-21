@@ -5,13 +5,16 @@ window.onload = function() {
 
   // Preload assets
   game.preload(
+	'images/nwomatri.png',
     'images/space.jpg'
   );
 
   // Set scenes and start game
   game.onload = function() {
-    game.pushScene(new StringTheoryScene());
+    STS = new StringTheoryScene();
+	//game.pushScene(STS);
     game.pushScene(new WelcomeScreen());
   }
+  console.log("hi");
   game.start();
 }
