@@ -13,7 +13,6 @@ Player = Class.create(Sprite, // We extend the Sprite class
 	onenterframe: function () {
             if (this.age % 4 === 0) {
 				this.frame += this.increment;
-				console.log("Hi");
             }
             
             if (this.frame >=11) {

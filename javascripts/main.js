@@ -15,6 +15,5 @@ window.onload = function() {
 	//game.pushScene(STS);
     game.pushScene(new WelcomeScreen());
   }
-  console.log("hi");
   game.start();
 }
