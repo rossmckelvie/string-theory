@@ -1,0 +1,36 @@
+PlayerShoot = Class.create(Sprite, // We extend the Sprite class
+{
+    initialize: function(x, y, mx, my) { //initialization
+        Sprite.call(this, 32, 32); //initialization of the Sprite object
+        this.image = game.assets['images/balls.png'];
+        this.x = (x) + newPlayer.width/2 - (this.width / 2);;
+        this.y = (y) + newPlayer.height/2 - (this.height / 2);;
+        this.frame = 0;
+		this.increment = 1;
+		this.xVector = mx - (x + newPlayer.width/2);
+		this.yVector = my - (y + newPlayer.height/2);
+		this.xDir = this.xVector / Math.sqrt((Math.abs(this.xVector^2) + Math.abs(this.yVector^2)));
+		this.yDir = this.yVector / Math.sqrt((Math.abs(this.xVector^2) + Math.abs(this.yVector^2)));
+		this.Spd = 1;
+		this.xSpd = this.Spd * this.xDir;
+		this.ySpd = this.Spd * this.yDir;
+    },
+	
+	onenterframe: function () {
+            if (this.age % 2 === 0) {
+				this.frame += this.increment;
+            }
+            
+            if (this.frame >=2) {
+				this.increment = -1;
+            }
+			
+			if (this.frame <= 0) {
+				this.increment = 1;
+			}
+			
+			this.x = this.x + this.xSpd;
+			this.y = this.y + this.ySpd;
+			
+	}
+});

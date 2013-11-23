@@ -7,7 +7,6 @@ Player = Class.create(Sprite, // We extend the Sprite class
         this.y = (game.height / 2) - (this.height / 2);;
         this.frame = 7;
 		this.increment = 1;
-        game.rootScene.addChild(this);
     },
 	
 	onenterframe: function () {
@@ -22,5 +21,12 @@ Player = Class.create(Sprite, // We extend the Sprite class
 			if (this.frame <= 7) {
 				this.increment = 1;
 			}
-	}
+			
+			if(game.touched && this.age % 2 === 0 && this.numLasers < 8) {
+				new PlayerShoot(this.x, this.y, this.mx, this.my);
+                this.numLasers ++;
+            }
+			
+	},
+	
 });

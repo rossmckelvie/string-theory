@@ -6,12 +6,13 @@ window.onload = function() {
   // Preload assets
   game.preload(
 	'images/nwomatri.png',
-    'images/space.jpg'
+    'images/space.jpg',
+	'images/balls.png'
   );
 
   // Set scenes and start game
   game.onload = function() {
-    STS = new StringTheoryScene();
+    game.pushScene(StringTheoryScene());
 	//game.pushScene(STS);
     game.pushScene(new WelcomeScreen());
   }
