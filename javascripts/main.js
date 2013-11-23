@@ -1,6 +1,6 @@
 window.onload = function() {
   // Create Game
-  game = new Game(500, 500);
+  game = new Game(800, 600);
   game.scale = 1;
 
   // Preload assets
