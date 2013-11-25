@@ -8,13 +8,16 @@ window.onload = function() {
   game.preload(
 	'images/nwomatri.png',
     'images/space.jpg',
-	'images/balls.png'
+	'images/balls.png',
+   'images/stringtheory2.png',
+   'images/stringtheory3.png',
+   'images/particle0.png',
+   'images/start1.png'
   );
 
   // Set scenes and start game
   game.onload = function() {
-    game.pushScene(StringTheoryScene());
-	//game.pushScene(STS);
+    game.pushScene(new StringTheoryScene());
     game.pushScene(new WelcomeScreen());
   }
   game.start();
