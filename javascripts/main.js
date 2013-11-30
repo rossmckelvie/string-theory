@@ -1,8 +1,15 @@
+var lasers = [];
+
 window.onload = function() {
   // Create Game
   game = new Game(800, 600);
   game.scale = 1;
   game.fps = 60;
+  
+  game.keybind(65, 'left');
+  game.keybind(68, 'right');
+  game.keybind(87, 'up');
+  game.keybind(83, 'down');
 
   // Preload assets
   game.preload(
