@@ -16,8 +16,8 @@ window.onload = function() {
 	'images/nwomatri.png',
     'images/space.jpg',
 	'images/balls.png',
-   'images/stringtheory2.png',
-   'images/stringtheory3.png',
+   'images/stringtheory.png',
+   'images/stringtheory1.png',
    'images/particle0.png',
    'images/start1.png'
   );
