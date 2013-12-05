@@ -37,10 +37,21 @@ PlayerShoot = Class.create(Sprite, // We extend the Sprite class
 		if (this.frame <= 0) {
 			this.increment = 1;
 		}
+
+		if (this.x + this.width < 0 ||
+			this.x - this.width > game.width ||
+			this.y + this.height < 0 ||
+			this.y - this.height > game.height ||
+			(this.dead)){
 			
+			newPlayer.numLasers --;
+			lasers.pop(this);
+			this.parentNode.removeChild(this);
+			this.destroy;
+		}
+		
 		this.x = this.x + this.xSpd;
 		this.y = this.y + this.ySpd;
-			
-			
+		
 	}
 });

@@ -15,20 +15,7 @@ var StringTheoryScene = Class.create(Scene, {
                 newPlayer.numLasers ++;
 		}
 		
-		for(i = 0; i < lasers.length; i++){
-            if (lasers[i].x + lasers[i].width < 0 ||
-			lasers[i].x - lasers[i].width > game.width ||
-			lasers[i].y + lasers[i].height < 0 ||
-			lasers[i].y - lasers[i].height > game.height ||
-			(lasers[i].dead)){
-			
-			
-			newPlayer.numLasers --;			
-			this.removeChild(lasers[i]);
-			lasers[i].destroy;
-			lasers.pop(lasers[i]);
-			}
-		}
+		
 		
 	},
   
