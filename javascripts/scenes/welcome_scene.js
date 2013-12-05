@@ -47,6 +47,7 @@ var WelcomeScreen = Class.create(Scene, {
 
   onenterframe: function(evt) {
     this.addEventListener(Event.TOUCH_START, this.handleClick);
+	
   },
 
   handleClick: function() {
@@ -60,6 +61,7 @@ var PlayerSprite = Class.create(Sprite, {
     this.image = game.assets['images/nwomatri.png'];
     this.x = game.width/2 - this.width/2;
     this.y = game.height/2 - this.height/2;
+	this.omega = 2;
     this.addEventListener(Event.ENTER_FRAME, this.update);
   },
 
@@ -75,6 +77,8 @@ var PlayerSprite = Class.create(Sprite, {
     if (this.frame <= 7) {
       this.increment = 1;
     }
+	
+	this.rotate(this.omega);
   }
 });
 

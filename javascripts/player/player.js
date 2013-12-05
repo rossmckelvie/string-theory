@@ -9,6 +9,7 @@ Player = Class.create(Sprite, // We extend the Sprite class
 		this.increment = 1;
 		this.numLasers = 0;
 		this.moveSpeed = 5;
+		this.omega = 2;
     },
 	
 	onenterframe: function () {
@@ -23,7 +24,9 @@ Player = Class.create(Sprite, // We extend the Sprite class
 		if (this.frame <= 7) {
 			this.increment = 1;
 		}
-			
+		
+		this.rotate(this.omega);
+		
 		if (game.input.left && !game.input.right) {
 			this.x -= this.moveSpeed;
 		}
