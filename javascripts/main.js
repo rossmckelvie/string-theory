@@ -5,7 +5,7 @@ window.onload = function() {
   game = new Game(800, 600);
   game.scale = 1;
   game.fps = 60;
-  
+
   game.keybind(65, 'left');
   game.keybind(68, 'right');
   game.keybind(87, 'up');
@@ -19,13 +19,14 @@ window.onload = function() {
    'images/stringtheory.png',
    'images/stringtheory1.png',
    'images/particle0.png',
-   'images/start1.png'
+   'images/start1.png',
+   'sounds/hyper.mp3',
+   'sounds/hypermain.mp3'
   );
 
   // Set scenes and start game
   game.onload = function() {
-    game.pushScene(new StringTheoryScene());
-    game.pushScene(new WelcomeScreen());
+      game.pushScene(new WelcomeScreen());
   }
   game.start();
 }

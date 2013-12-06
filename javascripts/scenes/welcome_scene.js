@@ -1,9 +1,15 @@
 var WelcomeScreen = Class.create(Scene, {
   initialize: function() {
-    var game, bg, title, start, particleGroup, playerSprite;
+    var game, bg, title, start, particleGroup, playerSprite, music;
 
     Scene.apply(this);
     game = Game.instance;
+
+    music = game.assets['sounds/hyper.mp3'];
+    music.volume = 0.15;
+    music.play();
+
+    this.music = music;
 
     // Set Background
     bg = new Sprite(game.width, game.height);
@@ -26,6 +32,10 @@ var WelcomeScreen = Class.create(Scene, {
     particleGroup = new Group();
 
     this.addEventListener(Event.ENTER_FRAME, function() {
+      if (this.music.currentTime >= this.music.duration ){
+         this.music.play();
+      }
+
       if (this.age % 2 == 0) {
 	 //particleGroup.addChild(new Particle(800, 800, 100));
 	 //particleGroup.addChild(new ParticleStream(0, 800, 100));
@@ -47,11 +57,12 @@ var WelcomeScreen = Class.create(Scene, {
 
   onenterframe: function(evt) {
     this.addEventListener(Event.TOUCH_START, this.handleClick);
-	
+
   },
 
   handleClick: function() {
-    Game.instance.popScene();
+    this.music.stop();
+    game.pushScene(new StringTheoryScene());
   }
 });
 
@@ -77,7 +88,7 @@ var PlayerSprite = Class.create(Sprite, {
     if (this.frame <= 7) {
       this.increment = 1;
     }
-	
+
 	this.rotate(this.omega);
   }
 });
