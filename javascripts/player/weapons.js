@@ -9,14 +9,11 @@ PlayerShoot = Class.create(Sprite, // We extend the Sprite class
 		this.increment = 1;
 		this.xVector = mx - (x + newPlayer.width/2) ;
 		this.yVector = my - (y + newPlayer.height/2);
-		console.log(this.xVector + " " + this.yVector);
 		this.Angle = Math.atan2(this.yVector, this.xVector);
-		console.log(this.Angle);
 		this.Spd = 10;
 		this.xSpd = this.Spd * Math.cos(this.Angle);
 		this.ySpd = this.Spd * Math.sin(this.Angle);
 		
-		console.log(this.xSpd + " " + this.ySpd);
 		this.dead = 0;
 		
 		if (this.xSpd === 0 && this.ySpd === 0) {
