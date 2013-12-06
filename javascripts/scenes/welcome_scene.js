@@ -1,6 +1,6 @@
 var WelcomeScreen = Class.create(Scene, {
   initialize: function() {
-    var game, bg, title, start, particleGroup, playerSprite, music;
+    var game, bg, title, start, particleGroup, playerSprite, music, selectFX;
 
     Scene.apply(this);
     game = Game.instance;
@@ -8,8 +8,11 @@ var WelcomeScreen = Class.create(Scene, {
     music = game.assets['sounds/hyper.mp3'];
     music.volume = 0.15;
     music.play();
-
     this.music = music;
+
+    selectFX = game.assets['sounds/select.wav'];
+    //selectFX.volume = 0.15;
+    this.selectFX = selectFX;
 
     // Set Background
     bg = new Sprite(game.width, game.height);
@@ -61,6 +64,7 @@ var WelcomeScreen = Class.create(Scene, {
   },
 
   handleClick: function() {
+    this.selectFX.play();
     this.music.stop();
     game.pushScene(new StringTheoryScene());
   }

@@ -21,7 +21,8 @@ window.onload = function() {
    'images/particle0.png',
    'images/start1.png',
    'sounds/hyper.mp3',
-   'sounds/hypermain.mp3'
+   'sounds/hypermain.mp3',
+   'sounds/select.wav'
   );
 
   // Set scenes and start game
