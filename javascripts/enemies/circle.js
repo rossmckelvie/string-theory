@@ -103,10 +103,6 @@ Circle = Class.create(Enemy, {
     if (this.angle > 360) this.angle = 0;
   },
 
-  getOffsetValue: function(maxOffset) {
-    return Math.floor(Math.random() * maxOffset);
-  },
-
   getRandomRadius: function(shortest, longest) {
     return Math.floor(Math.random() * (longest - shortest + 1) + shortest);
   }

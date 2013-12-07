@@ -50,5 +50,9 @@ Enemy = Class.create(Sprite, {
 
     this.x += xSpeed;
     this.y += ySpeed;
+  },
+
+  getOffsetValue: function(maxOffset) {
+    return Math.floor(Math.random() * maxOffset);
   }
 });
