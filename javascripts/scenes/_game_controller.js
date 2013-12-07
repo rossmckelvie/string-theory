@@ -42,7 +42,7 @@ GameController = Class.create(Sprite, {
   onenterframe: function() {
     // Incrememnt level if needed
     if (!this.maxLevel && this.scene.score >= this.levels[this.level + 1]['score']) {
-      if (++this.level >= this.levels.length) {
+      if (++this.level >= this.levels.length - 1) {
         this.level--;
         this.maxLevel = true;
       }
