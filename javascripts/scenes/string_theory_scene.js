@@ -44,7 +44,7 @@ var StringTheoryScene = Class.create(Scene, {
     game.touched = false;
   },
 
-  getPlayer() {
+  getPlayer: function() {
     return this.player;
   }
 });
