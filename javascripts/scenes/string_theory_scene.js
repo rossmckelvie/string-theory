@@ -10,8 +10,8 @@ var StringTheoryScene = Class.create(Scene, {
     this.music = music;
 
     this.addChild(bg);
-    this.player = new Player();
-    this.addChild(this.player);
+    newPlayer = new Player();
+    this.addChild(newPlayer);
   },
 
   onenterframe: function() {
@@ -43,8 +43,4 @@ var StringTheoryScene = Class.create(Scene, {
     newPlayer.mx = e.x;
     game.touched = false;
   },
-
-  getPlayer: function() {
-    return this.player;
-  }
 });
