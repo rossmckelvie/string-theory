@@ -44,7 +44,6 @@ var StringTheoryScene = Class.create(Scene, {
     this.addChild(wormGroup);
     this.addChild(laserGroup);
 
-<<<<<<< HEAD
 	newPlayer = new Player();
 	this.addChild(newPlayer);
    this.addChild(wormGroup);
@@ -67,12 +66,10 @@ var StringTheoryScene = Class.create(Scene, {
       worm = new newWorm();
       this.wormGroup.addChild(worm);
       }
-=======
     var square = new Square(0, 0);
     this.addChild(square);
 
     this.numEnemies = 0;
->>>>>>> ad1392d4c3e310c101cd860075db37f032f25166
   },
 
   onenterframe: function() {
