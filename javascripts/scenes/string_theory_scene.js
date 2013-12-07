@@ -38,15 +38,11 @@ var StringTheoryScene = Class.create(Scene, {
     this.addChild(scoreLabel);
 
     // High Score Label
-    var highScoreLabel;
-    if (highscore === undefined) {
-      highScoreLabel = new Label("High Score: 0");
-      highScoreLabel.addEventListener('enterframe', function() {
+    var highScoreLabel = new Label("High Score: " + this.highscore);
+    highScoreLabel.addEventListener('enterframe', function() {
+      if (scene.score > scene.highscore)
         this.text = "High Score: " + scene.score;
-      });
-    }
-    else highScoreLabel = new Label("High Score: " + this.highscore);
-
+    });
     highScoreLabel.color = "white";
     highScoreLabel.font = "14px ProximaNova";
     highScoreLabel.x = 10;

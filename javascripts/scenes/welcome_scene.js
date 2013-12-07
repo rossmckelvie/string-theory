@@ -68,7 +68,7 @@ var WelcomeScreen = Class.create(Scene, {
   handleClick: function() {
     this.selectFX.play();
     this.music.stop();
-    game.pushScene(new StringTheoryScene(undefined));
+    game.pushScene(new StringTheoryScene(0));
   }
 });
 
