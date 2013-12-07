@@ -64,7 +64,6 @@ var StringTheoryScene = Class.create(Scene, {
       this.numEnemies ++;
       worm = new newWorm();
       this.wormGroup.addChild(worm);
-
       }
   },
 
@@ -73,7 +72,7 @@ var StringTheoryScene = Class.create(Scene, {
       this.music.play();
     }
 
-    if (game.touched && this.age % 3 === 0) {
+    if (game.touched && this.age % 6 === 0) {
       laser = new PlayerShoot(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
       this.addChild(laser);
       newPlayer.numLasers++;
