@@ -45,8 +45,8 @@ var WelcomeScreen = Class.create(Scene, {
 	 //particleGroup.addChild(new Particle(800, 800, 100));
 	 //particleGroup.addChild(new ParticleStream(0, 800, 100));
 	 //particleGroup.addChild(new ParticleStream(400, 1200, 100));
-	particleGroup.addChild(new ParticleBlast(400, 300, 90, 95));
-	particleGroup.addChild(new ParticleBlast(400, 300, 90, 95));
+	particleGroup.addChild(new ParticleBlast(475, 350, 90, 100));
+	particleGroup.addChild(new ParticleBlast(475, 350, 90, 100));
 
       }
       start.tl.fadeIn(30);
@@ -127,7 +127,7 @@ var ParticleBlast = Class.create(Sprite, {
       this.blast = blast;
       this.scaleX = 0.5;
       this.scaleY = 0.3;
-      this.tl.moveTo(Math.floor(Math.random() * 800), Math.floor(Math.random() * 600), speed).and().fadeOut(100);
+      this.tl.moveTo(Math.floor(Math.random() * 950), Math.floor(Math.random() * 700), speed).and().fadeOut(100);
       this.addEventListener(Event.ENTER_FRAME, this.update);
    },
 
@@ -135,7 +135,7 @@ var ParticleBlast = Class.create(Sprite, {
       if (this.age > this.blast) {
 	this.parentNode.removeChild(this);
       }
-      if (this.y < 10 || this.y > 590) {
+      if (this.y < 10 || this.y > 690) {
 	 this.parentNode.removeChild(this);
       }
    }
