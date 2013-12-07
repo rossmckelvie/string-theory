@@ -26,7 +26,8 @@ window.onload = function() {
     'images/circle_glow.png',
     'sounds/hyper.mp3',
     'sounds/hypermain.mp3',
-    'sounds/select.wav'
+    'sounds/select.wav',
+    'images/playerHitbox.png'
    );
 
   // Set scenes and start game

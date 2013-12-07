@@ -3,7 +3,8 @@ Enemy = Class.create(Sprite, {
     var laser, i;
 
     // Collision detection on player
-    if (this.intersect(newPlayer)) {
+    if (this.intersect(hitbox)) {
+      music.stop();
       this.parentNode.endGame();
       return;
     }

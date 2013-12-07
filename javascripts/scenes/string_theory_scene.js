@@ -18,7 +18,7 @@ var StringTheoryScene = Class.create(Scene, {
     this.laserGroup = laserGroup;
 
     // Music
-    music = game.assets['sounds/hypermain.mp3'];
+    music = enchant.DOMSound.load('sounds/hypermain.mp3');
     music.volume = 0.15;
     music.play();
     this.music = music;
@@ -54,8 +54,12 @@ var StringTheoryScene = Class.create(Scene, {
     this.addChild(highScoreLabel);
 
     // Player
-    newPlayer = new Player();
+    hitbox = new PlayerHitbox();
+    hitbox.x = game.width/2 - hitbox.width/2;
+    hitbox.y = (game.height / 2) - (hitbox.height / 2);
+    newPlayer = new Player(hitbox);
     this.addChild(newPlayer);
+    this.addChild(hitbox);
 
     // Enemies
     this.addChild(wormGroup);
