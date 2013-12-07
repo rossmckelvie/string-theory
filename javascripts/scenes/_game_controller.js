@@ -18,7 +18,8 @@ GameController = Class.create(Sprite, {
         enemies: [
           ['Triangle', 50],
           ['Circle', 30],
-          ['Square', 40]
+          ['Square', 40],
+          ['BlackHole', 60]
         ]
       },
 

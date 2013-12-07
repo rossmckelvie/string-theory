@@ -33,6 +33,7 @@ window.onload = function() {
     'images/square_glow.png',
     'images/circle_glow.png',
     'images/triangle_glow.png',
+    'images/black_hole_glow.png',
 
     // Sounds
     'sounds/hyper.mp3',
