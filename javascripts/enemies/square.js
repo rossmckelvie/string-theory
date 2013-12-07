@@ -62,20 +62,5 @@ Square = Class.create(Enemy, {
     if (this.x < 0) this.x = 0;
     if (this.x + this.width > game.width) this.x = game.width - this.width;
     if (this.y + this.height > game.height) this.y = game.height - this.height;
-  },
-
-  followPlayer: function() {
-    this.xVector = (newPlayer.x + (newPlayer.width / 2)) - (this.x + (this.width / 2));
-    this.yVector = (newPlayer.y + (newPlayer.height / 2)) - (this.y + (this.height / 2));
-    this.angle = Math.atan2(this.yVector, this.xVector);
-
-    this.xSpeed = this.speed * Math.cos(this.angle);
-    this.ySpeed = this.speed * Math.sin(this.angle);
-
-    if (this.xSpeed === 0 && this.ySpeed === 0)
-      this.xSpeed = 1;
-
-    this.x += this.xSpeed;
-    this.y += this.ySpeed;
   }
 });
