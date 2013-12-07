@@ -22,11 +22,13 @@ var WelcomeScreen = Class.create(Scene, {
     start.image = game.assets['images/start1.png'];
     start.x = game.width/2 - start.width/2;
     start.y = 500;
+    this.start = start;
 
     title = new Sprite(596, 49);
     title.image = game.assets['images/stringtheory.png'];
     title.x = game.width/2 - title.width/2;
     title.y = -300;
+    this.title = title;
 
     title.tl.moveTo(title.x, 100, 70);
 
@@ -35,7 +37,7 @@ var WelcomeScreen = Class.create(Scene, {
     particleGroup = new Group();
 
     this.addEventListener(Event.ENTER_FRAME, function() {
-      if (this.music.currentTime >= this.music.duration ){
+      if (this.music.currentTime >= this.music.duration){
          this.music.play();
       }
 
