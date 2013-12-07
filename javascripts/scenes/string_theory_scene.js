@@ -3,7 +3,6 @@ var StringTheoryScene = Class.create(Scene, {
     Scene.apply(this);
 
     var wormGroup;
-	bg = new Sprite(game.width, game.height);
     bg = new Sprite(game.width, game.height);
     bg.image = game.assets['images/space.jpg'];
 
@@ -40,9 +39,12 @@ var StringTheoryScene = Class.create(Scene, {
 
     this.addChild(bg);
 
-    /*this.addChild(scoreLabel);
-    this.addChild(highScoreLabel);*/
+    newPlayer = new Player();
+    this.addChild(newPlayer);
+    this.addChild(wormGroup);
+    this.addChild(laserGroup);
 
+<<<<<<< HEAD
 	newPlayer = new Player();
 	this.addChild(newPlayer);
    this.addChild(wormGroup);
@@ -65,17 +67,29 @@ var StringTheoryScene = Class.create(Scene, {
       worm = new newWorm();
       this.wormGroup.addChild(worm);
       }
+=======
+    var square = new Square(0, 0);
+    this.addChild(square);
+
+    this.numEnemies = 0;
+>>>>>>> ad1392d4c3e310c101cd860075db37f032f25166
   },
 
   onenterframe: function() {
-    if (this.music.currentTime >= this.music.duration) {
+    if (this.music.currentTime >= this.music.duration ) {
       this.music.play();
     }
 
     if (game.touched && this.age % 6 === 0) {
       laser = new PlayerShoot(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
-      this.addChild(laser);
-      newPlayer.numLasers++;
+      this.laserGroup.addChild(laser);
+      newPlayer.numLasers ++;
+    }
+
+    if (this.numEnemies === 0) {
+      this.numEnemies++;
+      worm = new newWorm();
+      this.wormGroup.addChild(worm);
     }
   },
 

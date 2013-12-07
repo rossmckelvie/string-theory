@@ -21,6 +21,7 @@ window.onload = function() {
     'images/stringtheory1.png',
     'images/particle0.png',
     'images/start1.png',
+    'images/square_glow.png',
     'sounds/hyper.mp3',
     'sounds/hypermain.mp3',
     'sounds/select.wav'
