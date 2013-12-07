@@ -14,20 +14,30 @@ window.onload = function() {
 
   // Preload assets
   game.preload(
-    'images/gameover.png',
-    'images/nwomatri.png',
+    // Scenes
     'images/space.jpg',
-    'images/balls.png',
     'images/stringtheory.png',
     'images/stringtheory1.png',
     'images/particle0.png',
     'images/start1.png',
+    'images/gameover.png',
+
+    // Player
+    'images/nwomatri.png',
+    'images/playerHitbox.png',
+
+    // Weapons
+    'images/balls.png',
+
+    // Enemies
     'images/square_glow.png',
     'images/circle_glow.png',
+    'images/triangle_glow.png',
+
+    // Sounds
     'sounds/hyper.mp3',
     'sounds/hypermain.mp3',
     'sounds/select.wav',
-    'images/playerHitbox.png',
     'sounds/deadEnemy.wav'
    );
 
