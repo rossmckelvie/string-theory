@@ -53,7 +53,6 @@ GameController = Class.create(Sprite, {
   },
 
   spawnEnemy: function() {
-    console.log("spawning enemy!");
     var random = Math.floor(Math.random() * this.enemyChoiceTotalWeight);
     var i, cumulativeWeight = 0;
     var corner = this.randomSpawnCorner();
