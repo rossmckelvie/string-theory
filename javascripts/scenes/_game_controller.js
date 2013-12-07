@@ -13,23 +13,23 @@ GameController = Class.create(Sprite, {
     this.levels = [
       // LEVEL 0
       {
-	score: 1000,
-	spawn_rate: 60,
-	enemies: [
-	  ['Circle', 30],
-	  ['Square', 40]
-	]
+        score: 1000,
+        spawn_rate: 60,
+        enemies: [
+          ['Circle', 30],
+          ['Square', 40]
+        ]
       },
 
       // LEVEL 1
       {
-	score: 3000,
-	spawn_rate: 40,
-	enemies: [
-	  ['Circle', 20],
-	  ['Square', 40],
-	  ['Worm', 20]
-	]
+        score: 3000,
+        spawn_rate: 40,
+        enemies: [
+          ['Circle', 20],
+          ['Square', 40],
+          ['Worm', 20]
+        ]
       }
     ];
 
@@ -40,8 +40,8 @@ GameController = Class.create(Sprite, {
     // Incrememnt level if needed
     if (!this.maxLevel && this.scene.score >= this.levels[this.level + 1]['score']) {
       if (++this.level >= this.levels.length) {
-	this.level--;
-	this.maxLevel = true;
+        this.level--;
+        this.maxLevel = true;
       }
     }
 
@@ -60,16 +60,16 @@ GameController = Class.create(Sprite, {
       cumulativeWeight += this.levels[this.level]['enemies'][i][1];
 
       if (random < cumulativeWeight) {
-	var enemy = new window[this.levels[this.level]['enemies'][i][0]](corner[0], corner[1]);
-	this.scene.addChild(enemy);
-	return;
+        var enemy = new window[this.levels[this.level]['enemies'][i][0]](corner[0], corner[1]);
+        this.scene.addChild(enemy);
+        return;
       }
     }
   },
 
   randomSpawnCorner: function() {
     var horizontalSpawn = this.randomBinary() === 0 ? 0 : game.width,
-	  verticalSpawn = this.randomBinary() === 0 ? 0 : game.height;
+    verticalSpawn = this.randomBinary() === 0 ? 0 : game.height;
 
     return [ horizontalSpawn, verticalSpawn ];
   },
