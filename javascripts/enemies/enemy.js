@@ -32,24 +32,24 @@ Enemy = Class.create(Sprite, {
       if (this.intersect(laser)) {
         laserGroup.removeChild(laser);
 
-	// Decrememnt health
-	--this.health;
+        // Decrememnt health
+        --this.health;
 
-	// Flicker if not dead
-	if (this.health > 0) {
-	  this.flicker();
-	}
+        // Flicker if not dead
+        if (this.health > 0) {
+          this.flicker();
+        }
 
-	// Die if health is now zero
-	else {
-	  scene.incrementScore(this.scoreValue);
-	  enemyGroup.removeChild(this);
-	  sfxEnemy.play();
+        // Die if health is now zero
+        else {
+          scene.incrementScore(this.scoreValue);
+          enemyGroup.removeChild(this);
+          sfxEnemy.play();
 
-	  //Particle effect on death
-	  for (var i = 0; i < 25; i++)
-	    game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
-	}
+          //Particle effect on death
+          for (var i = 0; i < 25; i++)
+            game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        }
 
         // All done, return
         break;
