@@ -1,6 +1,6 @@
 newWorm = Class.create(Sprite, // We extend the Sprite class
 {
-    initialize: function() { //initialization
+    initialize: function(x, y) { //initialization
         Sprite.call(this, 32, 32); //initialization of the Sprite object
         this.image = game.assets['images/balls.png'];
         this.x = (game.width);

@@ -66,13 +66,9 @@ var StringTheoryScene = Class.create(Scene, {
     this.addChild(laserGroup);
     this.numEnemies = 0;
 
-    // Demo square
-    var square = new Square(0, 0);
-    this.addChild(square);
-
-    // Demo circle
-    var circle = new Circle(game.width, game.height);
-    this.addChild(circle);
+    // Start game controller
+    var gc = new GameController(this);
+    this.addChild(gc);
   },
 
   onenterframe: function() {
@@ -88,7 +84,7 @@ var StringTheoryScene = Class.create(Scene, {
 
     if (this.numEnemies === 0) {
       this.numEnemies ++;
-      worm = new newWorm();
+      worm = new newWorm(0, 0);
       this.wormGroup.addChild(worm);
     }
 
@@ -108,7 +104,7 @@ var StringTheoryScene = Class.create(Scene, {
 
     if (this.numEnemies === 0) {
       this.numEnemies++;
-      worm = new newWorm();
+      worm = new newWorm(0, 0);
       this.wormGroup.addChild(worm);
     }
   },
