@@ -15,8 +15,6 @@ newWorm = Class.create(Sprite, // We extend the Sprite class
 		this.coll = 0;
     },
 
-
-
 	onenterframe: function () {
 
 		this.x -= this.moveSpeed;
@@ -33,6 +31,16 @@ newWorm = Class.create(Sprite, // We extend the Sprite class
 			this.parentNode.numEnemies --;
 			this.parentNode.removeChild(this);
 			this.destroy;
+		}
+
+		//collision detection
+		for (var j = laserGroup.childNodes.length - 1; j >= 0; j--) {
+		    var laser;
+		    laser = laserGroup.childNodes[j];
+		    if(this.intersect(laser)){
+		        this.parentNode.removeChild(this);
+		        break;
+		    }
 		}
 
 		/*for(i = 0; i < lasers.length; i++){
