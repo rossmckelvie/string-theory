@@ -46,8 +46,7 @@ PlayerShoot = Class.create(Weapon, {
     this.increment = 1;
 	this.Spd = 10;
 	this.gunDetect(x, y, mx, my);
-	this.scaleX = 10;
-	this.scaleY = 10;
+	
     if (this.xSpd === 0 && this.ySpd === 0) {
       this.xSpd = 1;
     }
