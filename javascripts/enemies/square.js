@@ -1,7 +1,7 @@
 Square = Class.create(Sprite, {
   initialize: function(x, y) {
     Sprite.call(this, 50, 50);
-    this.image = game.assets['images/square_orange.png'];
+    this.image = game.assets['images/square_glow.png'];
 
     this.x = x;
     this.y = y;
