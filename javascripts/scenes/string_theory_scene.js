@@ -109,20 +109,20 @@ var StringTheoryScene = Class.create(Scene, {
   },
 
   ontouchstart: function (e) {
-    newPlayer.my = e.y - 50;
-    newPlayer.mx = e.x - 360;
+    newPlayer.my = e.y - gameOffsetY;
+    newPlayer.mx = e.x - gameOffsetX;
     game.touched = true;
   },
 
   ontouchmove: function (e) {
-    newPlayer.my = e.y - 50;
-    newPlayer.mx = e.x - 360;
+    newPlayer.my = e.y - gameOffsetY;
+    newPlayer.mx = e.x - gameOffsetX;
     game.touched = true;
   },
 
   ontouchend: function (e) {
-    newPlayer.my = e.y - 50;
-    newPlayer.mx = e.x - 360;
+    newPlayer.my = e.y - gameOffsetY;
+    newPlayer.mx = e.x - gameOffsetX;
     game.touched = false;
   },
 
