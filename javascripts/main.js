@@ -2,7 +2,7 @@ var lasers = [];
 
 window.onload = function() {
   // Create Game
-  game = new Game(800, 600);
+  game = new Game(950, 700);
   game.scale = 1;
   game.fps = 60;
 
