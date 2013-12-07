@@ -22,6 +22,7 @@ window.onload = function() {
     'images/particle0.png',
     'images/start1.png',
     'images/square_glow.png',
+    'images/circle_glow.png',
     'sounds/hyper.mp3',
     'sounds/hypermain.mp3',
     'sounds/select.wav'
