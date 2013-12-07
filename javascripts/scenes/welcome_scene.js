@@ -127,7 +127,7 @@ var ParticleBlast = Class.create(Sprite, {
       this.blast = blast;
       this.scaleX = 0.5;
       this.scaleY = 0.3;
-      this.tl.moveTo(Math.floor(Math.random() * 800), Math.floor(Math.random() * 600), speed);
+      this.tl.moveTo(Math.floor(Math.random() * 800), Math.floor(Math.random() * 600), speed).and().fadeOut(100);
       this.addEventListener(Event.ENTER_FRAME, this.update);
    },
 

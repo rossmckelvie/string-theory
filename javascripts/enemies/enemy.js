@@ -1,6 +1,8 @@
 Enemy = Class.create(Sprite, {
   collisionDetect: function() {
-    var laser, i;
+    var laser, i, sfxEnemy;
+
+    sfxEnemy = game.assets['sounds/deadEnemy.wav'];
 
     // Collision detection on player
     if (this.intersect(hitbox)) {
@@ -16,6 +18,37 @@ Enemy = Class.create(Sprite, {
         this.parentNode.incrementScore(this.scoreValue);
         this.parentNode.removeChild(this);
         laserGroup.removeChild(laser);
+        sfxEnemy.play();
+
+        //Particle effect on death.  I know this is stupid lol, I'll fix  it later.
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+        game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+
+
+
+
         break;
       }
     }
