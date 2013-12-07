@@ -10,20 +10,20 @@ var GameOverScreen = Class.create(Scene, {
     bg.image = game.assets['images/space.jpg'];
     this.addChild(bg);
 
-    // Add game over text
-    var img = new GameImage('gameover', 409, 50)
+    var img = new GameImage('gameover1', 523, 58);
     this.addChild(img);
 
     restart = new Sprite(384, 29);
     restart.image = game.assets['images/restart.png'];
     restart.x = game.width/2 - restart.width/2;
-    restart.y = 500;
+    restart.y = 600;
     this.addChild(restart);
 
     // Add score
     this.scoreLabel = new Label("Score: " + score);
     this.scoreLabel.color = "white";
     this.scoreLabel.font = "24px ProximaNova";
+    this.scoreLabel.textAlign = 'center';
     this.scoreLabel.x = (game.width / 2) - (this.scoreLabel.width / 2);
     this.scoreLabel.y = img.y + img.height + 40;
     this.addChild(this.scoreLabel);
@@ -37,6 +37,7 @@ var GameOverScreen = Class.create(Scene, {
     this.highScoreLabel = new Label("High Score: " + this.highscore);
     this.highScoreLabel.color = "white";
     this.highScoreLabel.font = "24px ProximaNova";
+    this.highScoreLabel.textAlign = 'center';
     this.highScoreLabel.x = (game.width / 2) - (this.highScoreLabel.width / 2);
     this.highScoreLabel.y = this.scoreLabel.y + 40;
     this.addChild(this.highScoreLabel);

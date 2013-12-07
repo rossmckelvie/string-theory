@@ -22,7 +22,7 @@ window.onload = function() {
     'images/stringtheory1.png',
     'images/particle0.png',
     'images/start1.png',
-    'images/gameover.png',
+    'images/gameover1.png',
     'images/restart.png',
 
     // Player
