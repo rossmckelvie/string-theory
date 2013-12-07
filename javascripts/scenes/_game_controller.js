@@ -13,9 +13,10 @@ GameController = Class.create(Sprite, {
     this.levels = [
       // LEVEL 0
       {
-        score: 1000,
+        score: 0,
         spawn_rate: 60,
         enemies: [
+          ['Triangle', 50],
           ['Circle', 30],
           ['Square', 40]
         ]
@@ -23,9 +24,10 @@ GameController = Class.create(Sprite, {
 
       // LEVEL 1
       {
-        score: 3000,
+        score: 400,
         spawn_rate: 40,
         enemies: [
+          ['Triangle', 18],
           ['Circle', 20],
           ['Square', 40],
           ['Worm', 20]
