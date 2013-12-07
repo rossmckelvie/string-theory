@@ -1,4 +1,6 @@
 var lasers = [];
+gameOffsetX = 0;
+gameOffsetY = 0;
 
 window.onload = function() {
   // Create Game
@@ -45,6 +47,13 @@ window.onload = function() {
 
   // Set scenes and start game
   game.onload = function() {
+    // Get offset of game
+    var element = document.getElementById('enchant-stage');
+    var position = element.getBoundingClientRect();
+    gameOffsetX = position.left;
+    gameOffsetY = position.top;
+
+    // Push welcome screen
     game.pushScene(new WelcomeScreen());
   }
 
