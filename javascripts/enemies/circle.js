@@ -1,4 +1,4 @@
-Circle = Class.create(Sprite, {
+Circle = Class.create(Enemy, {
   initialize: function(x, y) {
     Sprite.call(this, 50, 50);
     this.image = game.assets['images/circle_glow.png'];
@@ -7,6 +7,7 @@ Circle = Class.create(Sprite, {
     this.radius = 80;
     this.angle = 0;
     this.speed = 8;
+    this.scoreValue = 20;
 
     // Set y to top of sattelite distance
     if (y - this.radius < 0) {
@@ -40,9 +41,13 @@ Circle = Class.create(Sprite, {
   },
 
   onenterframe: function() {
+    this.collisionDetect();
+
     // Enrage after some time
-    if (this.age > 500)
+    if (this.age > 500 && this.frame === 0) {
       this.frame = 1;
+      this.scoreValue *= 2;
+    }
 
     // Pick path to follow
     if (this.frame === 0)

@@ -14,6 +14,7 @@ window.onload = function() {
 
   // Preload assets
   game.preload(
+    'images/gameover.png',
     'images/nwomatri.png',
     'images/space.jpg',
     'images/balls.png',
