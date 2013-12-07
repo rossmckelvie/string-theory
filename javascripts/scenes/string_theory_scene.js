@@ -1,8 +1,12 @@
 var StringTheoryScene = Class.create(Scene, {
   initialize: function() {
     Scene.apply(this);
+<<<<<<< HEAD
     var wormGroup;
 	bg = new Sprite(game.width, game.height);
+=======
+    bg = new Sprite(game.width, game.height);
+>>>>>>> 5361ebdfbe7a05965ede9889c4d4c9559ebb64e8
     bg.image = game.assets['images/space.jpg'];
 
     wormGroup = new Group();
@@ -37,6 +41,7 @@ var StringTheoryScene = Class.create(Scene, {
     this.music = music;
 
     this.addChild(bg);
+<<<<<<< HEAD
     /*this.addChild(scoreLabel);
     this.addChild(highScoreLabel);*/
 
@@ -65,23 +70,39 @@ var StringTheoryScene = Class.create(Scene, {
       }
 
 	},
+=======
+    newPlayer = new Player();
+    this.addChild(newPlayer);
+  },
+
+  onenterframe: function() {
+    if (this.music.currentTime >= this.music.duration) {
+      this.music.play();
+    }
+
+    if (game.touched && this.age % 3 === 0) {
+      laser = new PlayerShoot(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
+      this.addChild(laser);
+      newPlayer.numLasers++;
+    }
+  },
+>>>>>>> 5361ebdfbe7a05965ede9889c4d4c9559ebb64e8
 
   ontouchstart: function (e) {
-            newPlayer.my = e.y;
-            newPlayer.mx = e.x;
-            game.touched = true;
+    newPlayer.my = e.y;
+    newPlayer.mx = e.x;
+    game.touched = true;
+  },
 
-    },
+  ontouchmove: function (e) {
+    newPlayer.my = e.y;
+    newPlayer.mx = e.x;
+    game.touched = true;
+  },
 
-    ontouchmove: function (e) {
-			newPlayer.my = e.y;
-            newPlayer.mx = e.x;
-            game.touched = true;
-    },
-
-    ontouchend: function (e) {
-            newPlayer.my = e.y;
-            newPlayer.mx = e.x;
-            game.touched = false;
-    },
+  ontouchend: function (e) {
+    newPlayer.my = e.y;
+    newPlayer.mx = e.x;
+    game.touched = false;
+  },
 });
