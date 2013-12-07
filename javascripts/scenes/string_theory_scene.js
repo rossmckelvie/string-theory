@@ -12,6 +12,9 @@ var StringTheoryScene = Class.create(Scene, {
     this.addChild(bg);
     newPlayer = new Player();
     this.addChild(newPlayer);
+
+    var square = new Square(0, 0);
+    this.addChild(square);
   },
 
   onenterframe: function() {
