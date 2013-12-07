@@ -10,7 +10,7 @@ Enemy = Class.create(Sprite, {
     // Collision detection on player
     if (this.intersect(hitbox)) {
       music.stop();
-      this.parentNode.endGame();
+      scene.endGame();
       return;
     }
 
@@ -19,8 +19,8 @@ Enemy = Class.create(Sprite, {
       laser = laserGroup.childNodes[i];
 
       if (this.intersect(laser)) {
-	scene.incrementScore(this.scoreValue);
-	enemyGroup.removeChild(this);
+        scene.incrementScore(this.scoreValue);
+        enemyGroup.removeChild(this);
         laserGroup.removeChild(laser);
         sfxEnemy.play();
 
