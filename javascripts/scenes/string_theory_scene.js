@@ -1,12 +1,10 @@
 var StringTheoryScene = Class.create(Scene, {
   initialize: function() {
     Scene.apply(this);
-<<<<<<< HEAD
+
     var wormGroup;
 	bg = new Sprite(game.width, game.height);
-=======
     bg = new Sprite(game.width, game.height);
->>>>>>> 5361ebdfbe7a05965ede9889c4d4c9559ebb64e8
     bg.image = game.assets['images/space.jpg'];
 
     wormGroup = new Group();
@@ -41,7 +39,7 @@ var StringTheoryScene = Class.create(Scene, {
     this.music = music;
 
     this.addChild(bg);
-<<<<<<< HEAD
+
     /*this.addChild(scoreLabel);
     this.addChild(highScoreLabel);*/
 
@@ -68,11 +66,6 @@ var StringTheoryScene = Class.create(Scene, {
       this.wormGroup.addChild(worm);
 
       }
-
-	},
-=======
-    newPlayer = new Player();
-    this.addChild(newPlayer);
   },
 
   onenterframe: function() {
@@ -86,7 +79,6 @@ var StringTheoryScene = Class.create(Scene, {
       newPlayer.numLasers++;
     }
   },
->>>>>>> 5361ebdfbe7a05965ede9889c4d4c9559ebb64e8
 
   ontouchstart: function (e) {
     newPlayer.my = e.y;
