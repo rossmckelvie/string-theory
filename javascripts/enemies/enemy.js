@@ -19,8 +19,8 @@ Enemy = Class.create(Sprite, {
       laser = laserGroup.childNodes[i];
 
       if (this.intersect(laser)) {
-        this.parentNode.incrementScore(this.scoreValue);
-        this.parentNode.removeChild(this);
+	scene.incrementScore(this.scoreValue);
+	enemyGroup.removeChild(this);
         laserGroup.removeChild(laser);
         sfxEnemy.play();
 

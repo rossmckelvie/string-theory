@@ -16,6 +16,8 @@ var StringTheoryScene = Class.create(Scene, {
     this.wormGroup = wormGroup;
     laserGroup = new Group();
     this.laserGroup = laserGroup;
+    enemyGroup = new Group();
+    this.enemyGroup = enemyGroup;
 
     // Music
     music = enchant.DOMSound.load('sounds/hypermain.mp3');
@@ -60,6 +62,7 @@ var StringTheoryScene = Class.create(Scene, {
     // Enemies
     this.addChild(wormGroup);
     this.addChild(laserGroup);
+    this.addChild(enemyGroup);
     this.numEnemies = 0;
 
     // Start game controller

@@ -63,7 +63,8 @@ GameController = Class.create(Sprite, {
 
       if (random < cumulativeWeight) {
         var enemy = new window[this.levels[this.level]['enemies'][i][0]](corner[0], corner[1]);
-        this.scene.addChild(enemy);
+
+	enemyGroup.addChild(enemy);
         return;
       }
     }
