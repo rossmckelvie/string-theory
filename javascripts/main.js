@@ -6,6 +6,7 @@ window.onload = function() {
   game.scale = 1;
   game.fps = 60;
 
+  // Key bind
   game.keybind(65, 'left');
   game.keybind(68, 'right');
   game.keybind(87, 'up');
@@ -13,21 +14,23 @@ window.onload = function() {
 
   // Preload assets
   game.preload(
-	'images/nwomatri.png',
+    'images/nwomatri.png',
     'images/space.jpg',
-	'images/balls.png',
-   'images/stringtheory.png',
-   'images/stringtheory1.png',
-   'images/particle0.png',
-   'images/start1.png',
-   'sounds/hyper.mp3',
-   'sounds/hypermain.mp3',
-   'sounds/select.wav'
-  );
+    'images/balls.png',
+    'images/stringtheory.png',
+    'images/stringtheory1.png',
+    'images/particle0.png',
+    'images/start1.png',
+    'sounds/hyper.mp3',
+    'sounds/hypermain.mp3',
+    'sounds/select.wav'
+   );
 
   // Set scenes and start game
   game.onload = function() {
-      game.pushScene(new WelcomeScreen());
+    game.pushScene(new WelcomeScreen());
   }
+
+  // Start game
   game.start();
 }
