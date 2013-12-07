@@ -21,6 +21,7 @@ window.onload = function() {
     'images/particle0.png',
     'images/start1.png',
     'images/gameover.png',
+    'images/restart.png',
 
     // Player
     'images/nwomatri.png',

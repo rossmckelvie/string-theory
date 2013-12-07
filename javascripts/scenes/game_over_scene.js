@@ -14,6 +14,12 @@ var GameOverScreen = Class.create(Scene, {
     var img = new GameImage('gameover', 409, 50)
     this.addChild(img);
 
+    restart = new Sprite(384, 29);
+    restart.image = game.assets['images/restart.png'];
+    restart.x = game.width/2 - restart.width/2;
+    restart.y = 500;
+    this.addChild(restart);
+
     // Add score
     this.scoreLabel = new Label("Score: " + score);
     this.scoreLabel.color = "white";
@@ -37,6 +43,9 @@ var GameOverScreen = Class.create(Scene, {
   },
 
   onenterframe: function(evt) {
+    restart.tl.fadeIn(30);
+    restart.tl.fadeOut(30);
+
     this.addEventListener(Event.TOUCH_START, this.handleClick);
   },
 
