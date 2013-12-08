@@ -137,8 +137,8 @@ Enemy = Class.create(Sprite, {
 
       // Black hole may have been destroyed on the way
       if (this.blackHole === undefined) {
-	this.movingToBlackHole = false;
-	return true;
+        this.movingToBlackHole = false;
+        return true;
       }
 
       // Move towards black hole
@@ -146,11 +146,11 @@ Enemy = Class.create(Sprite, {
 
       // If we're on the black hole, get absorbed
       if (this.within(this.blackHole, 10)) {
-	this.x = -100;
-	this.y = -100;
-	this.blackHole.absorbEnemy(this);
-	this.movingToBlackHole = false;
-	enemyGroup.removeChild(this);
+        this.x = -100;
+        this.y = -100;
+        this.blackHole.absorbEnemy(this);
+        this.movingToBlackHole = false;
+        enemyGroup.removeChild(this);
       }
     }
 

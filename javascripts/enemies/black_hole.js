@@ -86,9 +86,9 @@ BlackHole = Class.create(Enemy, {
     // If exploding, spawn the squares
     if (this.exploding) {
       if (this.age % 5 === 0) {
-	square = new BlackHoleSquare(this.x, this.y);
-	enemyGroup.addChild(square);
-	this.explodeAmount--;
+        square = new BlackHoleSquare(this.x, this.y);
+        enemyGroup.addChild(square);
+        this.explodeAmount--;
       }
 
       if (this.explodeAmount === 0) enemyGroup.removeChild(this);
@@ -102,7 +102,7 @@ BlackHole = Class.create(Enemy, {
       var enemy = enemyGroup.childNodes[i];
 
       if (this.within(enemy, this.gravitationalPull) && enemy.absorbable)
-	enemy.absorbIntoBlackHole(this);
+       enemy.absorbIntoBlackHole(this);
     }
 
     // Pulse if needed
@@ -123,7 +123,7 @@ BlackHole = Class.create(Enemy, {
   pulse: function() {
     if (this.age % this.pulseRate === 0) {
       if (this.frame === 4 || (this.frame === 1 && this.pulseDirection === -1))
-	this.pulseDirection *= -1;
+       this.pulseDirection *= -1;
 
       this.frame += this.pulseDirection;
     }
