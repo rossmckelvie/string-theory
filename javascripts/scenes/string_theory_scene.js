@@ -199,7 +199,7 @@ var StringTheoryScene = Class.create(Scene, {
   getLifeIndicatorSprite: function(life_id) {
     var img = new GameImage('life_icon', 16, 16);
     img.y = 20;
-    img.x = (game.width / 2) - ((img.width + 10) * (life_id + 1));
+    img.x = (game.width / 2) - ((img.width + 10) * (life_id + 1)) - 17;
 
     return img;
   },
