@@ -11,11 +11,16 @@ Triangle = Class.create(Enemy, {
     this.speed = 2;
     this.scoreValue = 10;
     this.health = 1;
+	this.angleDiff = 0;
+	this.startAngle = -90;
   },
 
   onenterframe: function() {
     if (!this.super_onenterframe()) return;
     this.followPlayer();
-    this.rotate(this.angle);
+    
+	this.angleDiff = this.angle * 180 / Math.PI - this.rotation - this.startAngle;
+	this.rotate(this.angleDiff);
+	
   }
 });
