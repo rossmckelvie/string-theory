@@ -2,6 +2,7 @@ SpaceBackground = Class.create(Sprite, {
   initialize: function() { //initialization
   this.game = Game.instance;
   Sprite.call(this, game.width, game.height);
+  this.surface = new Surface(game.width, game.height);
 
   this.particleSpacing = 50;
 
@@ -64,15 +65,14 @@ SpaceBackground = Class.create(Sprite, {
   },
 
   drawBackground: function() {
-    var surface = new Surface(game.width, game.height);
     var spaceImg = game.assets['images/space.jpg'];
-    surface.draw(spaceImg);
+    this.surface.draw(spaceImg);
 
     for (i=0; i < this.numXParticles; i++)
     {
       for (j=0; j < this.numYParticles; j++)
       {
-        var context = surface.context;
+        var context = this.surface.context;
         if(i < this.numXParticles - 1)
         {
           context.beginPath();
@@ -94,7 +94,7 @@ SpaceBackground = Class.create(Sprite, {
         }
       }
     }
-    this.image = surface;
+    this.image = this.surface;
   },
 
   onenterframe: function () {
