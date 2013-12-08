@@ -42,14 +42,19 @@ Square = Class.create(Enemy, {
       }
     }
 
-    return this[this.currentPathController]();
+    this.frame = 0;
+    //return this[this.currentPathController]();
+    return this.moveRandom();
   },
 
   moveRandom: function() {
+    this.frame = 1;
+
     if (this.age % 30 === 0) {
       this.randomX = Math.floor(Math.random() * (game.width - (this.width / 2)));
       this.randomY = Math.floor(Math.random() * (game.height - (this.height / 2)));
       this.randomAngle = Math.atan2(this.randomX - this.x, this.randomY - this.y);
+      console.log("random angle", this.randomAngle)
     }
 
     this.randomXSpeed = this.speed * Math.cos(this.randomAngle);
@@ -61,8 +66,10 @@ Square = Class.create(Enemy, {
     var newX = this.x + this.randomXSpeed + this.width;
     var newY = this.y + this.randomYSpeed + this.height;
 
-    if (newX >= game.width || newX <= 0) this.randomXSpeed *= -1;
-    if (newY >= game.height || newY <= 0) this.randomYSpeed *= -1;
+    if (newX >= game.width || (this.x + this.randomXSpeed) <= 0) this.randomAngle *= 0.5;
+    if (newY >= game.height || (this.y + this.randomYSpeed) <= 0) {
+      this.randomAngle *= -1;
+    }
 
     this.x += this.randomXSpeed;
     this.y += this.randomYSpeed;

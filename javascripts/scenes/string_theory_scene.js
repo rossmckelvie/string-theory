@@ -167,7 +167,6 @@ var StringTheoryScene = Class.create(Scene, {
 
   playerDead: function() {
     newPlayer.lives--;
-    console.log("Player dying!");
 
     if (newPlayer.lives === 0) {
       music.stop();
