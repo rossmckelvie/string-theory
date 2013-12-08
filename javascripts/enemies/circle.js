@@ -1,6 +1,7 @@
 Circle = Class.create(Enemy, {
   initialize: function(x, y) {
-    Sprite.call(this, 50, 50);
+    this.super_initialize(x, y, 50, 50);
+
     this.image = game.assets['images/circle_glow.png'];
     this.frame = 0;
 
@@ -11,6 +12,7 @@ Circle = Class.create(Enemy, {
     this.angle = 0;
     this.speed = 8;
     this.scoreValue = 20;
+    this.health = 3;
 
     this.movedToStartPosition = false;
     var offsetX = this.getOffsetValue((game.width / 2) - this.radius * 1.5);
@@ -57,7 +59,7 @@ Circle = Class.create(Enemy, {
   },
 
   onenterframe: function() {
-    this.collisionDetect();
+    this.super_onenterframe();
 
     // Move into position if needed
     if (!this.movedToStartPosition) {
@@ -80,6 +82,7 @@ Circle = Class.create(Enemy, {
     if (this.age > 500 && this.frame === 0) {
       this.frame = 1;
       this.scoreValue *= 2;
+      this.health = 1;
     }
 
     // Pick path to follow

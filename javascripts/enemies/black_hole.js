@@ -1,6 +1,7 @@
 BlackHole = Class.create(Enemy, {
   initialize: function(x, y) {
-    Sprite.call(this, 50, 50);
+    this.super_initialize(x, y, 50, 50);
+
     this.image = game.assets['images/black_hole_glow.png'];
     this.frame = 0;
 
@@ -9,6 +10,7 @@ BlackHole = Class.create(Enemy, {
 
     this.scoreValue = 10;
     this.speed = 0;
+    this.health = 1;
 
     this.x = x;
     this.y = y;
@@ -41,7 +43,7 @@ BlackHole = Class.create(Enemy, {
   },
 
   onenterframe: function() {
-    this.collisionDetect();
+    this.super_onenterframe();
 
     // Fade in if needed
     if (!this.displayedFully) {

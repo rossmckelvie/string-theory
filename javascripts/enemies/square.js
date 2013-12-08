@@ -1,12 +1,15 @@
 Square = Class.create(Enemy, {
   initialize: function(x, y) {
-    Sprite.call(this, 50, 50);
+    this.super_initialize(x, y, 50, 50);
+
     this.image = game.assets['images/square_glow.png'];
+    this.frame = 0;
 
     this.x = x;
     this.y = y;
 
     this.scoreValue = 20;
+    this.health = 2;
 
     this.speed = 5;
     this.currentPathController = "followPlayer";
@@ -22,7 +25,7 @@ Square = Class.create(Enemy, {
   },
 
   onenterframe: function() {
-    this.collisionDetect();
+    this.super_onenterframe();
 
     // Every 30 steps, choose random direction or follow
     if (!(this.age % 30 === 0)) return this[this.currentPathController]();
