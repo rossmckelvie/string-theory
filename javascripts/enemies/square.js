@@ -67,9 +67,7 @@ Square = Class.create(Enemy, {
     var newY = this.y + this.randomYSpeed + this.height;
 
     if (newX >= game.width || (this.x + this.randomXSpeed) <= 0) this.randomAngle *= 0.5;
-    if (newY >= game.height || (this.y + this.randomYSpeed) <= 0) {
-      this.randomAngle *= -1;
-    }
+    if (newY >= game.height || (this.y + this.randomYSpeed) <= 0) this.randomAngle *= -1;
 
     this.x += this.randomXSpeed;
     this.y += this.randomYSpeed;
