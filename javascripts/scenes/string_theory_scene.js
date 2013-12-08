@@ -33,6 +33,12 @@ var StringTheoryScene = Class.create(Scene, {
     // Background
     this.addChild(bg);
 
+    tutorial = new Sprite(335, 173);
+    tutorial.image = game.assets['images/tutorial.png'];
+    tutorial.x = game.width/2 - tutorial.width/2;
+    tutorial.y = (game.height / 2) - (tutorial.height / 2) - 200;
+    this.addChild(tutorial);
+
     // Score Label
     scoreLabel = new Label("Score: 0");
     scoreLabel.addEventListener('enterframe', function() {
@@ -83,6 +89,13 @@ var StringTheoryScene = Class.create(Scene, {
   onenterframe: function() {
     if (this.music.currentTime >= this.music.duration) {
       this.music.play();
+    }
+
+    tutorial.tl.fadeIn(30);
+    tutorial.tl.fadeOut(30);
+
+    if (this.age == 300) {
+      this.removeChild(tutorial);
     }
 
     this.checkShoot();

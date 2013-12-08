@@ -37,7 +37,7 @@ Enemy = Class.create(Sprite, {
 
       if (this.intersect(laser)) {
         //Particle effect on death
-        for (var i = 0; i < 5; i++)
+        for (var i = 0; i < 10; i++)
           game.currentScene.addChild(new ParticleBlast(4, 15, this.x, this.y, 90, 91, 'particle0'));
 
         // Decrememnt health and remove laser
@@ -56,7 +56,7 @@ Enemy = Class.create(Sprite, {
           sfxEnemy.play();
 
           //Particle effect on death
-          for (var i = 0; i < 5; i++)
+          for (var i = 0; i < 10; i++)
             game.currentScene.addChild(new ParticleBlast(4, 15, this.x, this.y, 90, 91, 'particle0'));
         }
 
@@ -75,7 +75,7 @@ Enemy = Class.create(Sprite, {
         sfxEnemy.play();
 
         //Particle effect on death
-        for (var i = 0; i < 5; i++)
+        for (var i = 0; i < 10; i++)
           game.currentScene.addChild(new ParticleBlast(4, 15, this.x, this.y, 90, 91, 'particle0'));
 
         // All done, return
