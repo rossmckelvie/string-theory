@@ -79,26 +79,6 @@ var StringTheoryScene = Class.create(Scene, {
     this.addChild(gc);
   },
 
-  // onenterframe: function() {
-    // if (this.music.currentTime >= this.music.duration) {
-      // this.music.play();
-    // }
-
-    // if (game.touched && this.age % 6 === 0) {
-     // laser = new PlayerShoot(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
-     // this.laserGroup.addChild(laser);
-     // newPlayer.numLasers ++;
-    // }
-
-    // if (this.numEnemies === 0) {
-      // this.numEnemies ++;
-      // worm = new newWorm(0, 0);
-      // this.wormGroup.addChild(worm);
-    // }
-
-    // this.numEnemies = 0;
-  // },
-
   onenterframe: function() {
     if (this.music.currentTime >= this.music.duration) {
       this.music.play();
