@@ -33,6 +33,10 @@ var StringTheoryScene = Class.create(Scene, {
     // Background
     this.addChild(bg);
 
+    // Cursor
+    this.addChild(new Cursor());
+
+    // Tutorial
     tutorial = new Sprite(335, 173);
     tutorial.image = game.assets['images/tutorial.png'];
     tutorial.x = game.width/2 - tutorial.width/2;

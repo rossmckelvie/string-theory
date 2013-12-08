@@ -1,6 +1,8 @@
 var lasers = [];
 gameOffsetX = 0;
 gameOffsetY = 0;
+mouseX = 0;
+mouseY = 0;
 
 window.onload = function() {
   // Create Game
@@ -26,6 +28,7 @@ window.onload = function() {
     'images/gameover1.png',
     'images/restart.png',
     'images/tutorial.png',
+    'images/crosshair.png',
 
     // Player
     'images/nwomatri.png',
@@ -64,6 +67,8 @@ window.onload = function() {
     var position = element.getBoundingClientRect();
     gameOffsetX = position.left;
     gameOffsetY = position.top;
+    document.addEventListener("mousemove", mouseMove, false);
+    document.addEventListener("touchmove", mouseMove, false);
 
     // Push welcome screen
     game.pushScene(new WelcomeScreen());
@@ -71,4 +76,9 @@ window.onload = function() {
 
   // Start game
   game.start();
+}
+
+function mouseMove(event) {
+  mouseX = event.pageX - gameOffsetX;
+  mouseY = event.pageY - gameOffsetY;
 }
