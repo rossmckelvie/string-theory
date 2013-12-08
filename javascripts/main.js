@@ -29,6 +29,8 @@ window.onload = function() {
     // Player
     'images/nwomatri.png',
     'images/playerHitbox.png',
+    'images/life_icon.png',
+    'images/bomb_icon.png',
 
     // Weapons
     'images/balls.png',

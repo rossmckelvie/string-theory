@@ -16,5 +16,6 @@ Triangle = Class.create(Enemy, {
   onenterframe: function() {
     if (!this.super_onenterframe()) return;
     this.followPlayer();
+    this.rotate(this.angle);
   }
 });

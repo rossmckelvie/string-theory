@@ -11,6 +11,7 @@ var StringTheoryScene = Class.create(Scene, {
     bg.image = game.assets['images/space.jpg'];
 
     this.score = 0;
+    this.reviving = false;
 
     wormGroup = new Group();
     this.wormGroup = wormGroup;
@@ -59,6 +60,10 @@ var StringTheoryScene = Class.create(Scene, {
     newPlayer = new Player(hitbox);
     this.addChild(newPlayer);
     this.addChild(hitbox);
+
+    // Life & Bomb Indicators
+    this.drawLivesIndicator();
+    this.drawBombsIndicator();
 
     // Enemies
     this.addChild(wormGroup);
@@ -132,7 +137,61 @@ var StringTheoryScene = Class.create(Scene, {
     this.score += score;
   },
 
-  endGame: function() {
-    game.replaceScene(new GameOverScreen(this.score, this.highscore));
+  playerDead: function() {
+    newPlayer.lives--;
+    console.log("Player dying!");
+
+    if (newPlayer.lives === 0) {
+      music.stop();
+      game.replaceScene(new GameOverScreen(this.score, this.highscore));
+    } else {
+      this.reviving = true;
+
+      // Start player revive animation
+      newPlayer.revive();
+
+      // Remove one indicator
+      this.lifeIndicatorGroup.removeChild(this.lifeIndicatorGroup.lastChild);
+
+      // Nuke enemies
+      for (var i = enemyGroup.childNodes.length; i >= 0; i--)
+        enemyGroup.removeChild(enemyGroup.childNodes[i]);
+    }
+  },
+
+  drawLivesIndicator: function() {
+    this.lifeIndicatorGroup = new Group();
+    this.addChild(this.lifeIndicatorGroup);
+
+    for (var i = 0; i < newPlayer.lives; i++) {
+      this.lifeIndicatorGroup.addChild(this.getLifeIndicatorSprite(i));
+    }
+  },
+
+  getLifeIndicatorSprite: function(life_id) {
+    var img = new GameImage('life_icon', 16, 16);
+    img.y = 20;
+    img.x = (game.width / 2) - ((img.width + 10) * (life_id + 1));
+
+    return img;
+  },
+
+  drawBombsIndicator: function() {
+    var i, centerX = game.width / 2;
+    this.bombIndicatorGroup = new Group();
+
+    this.addChild(this.bombIndicatorGroup);
+
+    for (i = 0; i < newPlayer.bombs; i++) {
+      this.bombIndicatorGroup.addChild(this.getBombIndicatorSprite(i));
+    }
+  },
+
+  getBombIndicatorSprite: function(bomb_id) {
+    var img = new GameImage('bomb_icon', 16, 16);
+    img.y = 20;
+    img.x = (game.width / 2) + ((img.width + 10) * (bomb_id + 1));
+
+    return img;
   }
 });

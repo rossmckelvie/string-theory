@@ -12,10 +12,29 @@ Player = Class.create(Sprite, {
     this.moveSpeed = 5;
     this.omega = 2;
     this.hitbox = hitbox;
-    bombs = 1;
+    this.bombs = 3;
+    this.bombBreakAge = 0;
+    this.lives = 3;
+
+    this.reviving = false;
+    this.reviveAge = 0;
   },
 
   onenterframe: function () {
+    if (this.reviving) {
+      if (this.age % 8 === 0) {
+        if (++this.reviveAge % 2 === 0)
+          this.opacity = 1;
+        else
+          this.opacity = 0;
+      }
+
+      if (this.reviveAge === 6) {
+        this.reviving = false;
+        scene.reviving = false;
+      }
+    }
+
     if (this.age % 4 === 0) {
       this.frame += this.increment;
     }
@@ -50,10 +69,11 @@ Player = Class.create(Sprite, {
       this.hitbox.y +=this.moveSpeed;
     }
 
-    if (game.input.space && bombs > 0) {
-        //for (var i = 0; i < 70; i++)
-            bombGroup.addChild(new ParticleBomb(1500, 1500, this.x - 652, this.y - 650, 40, 40, 'bombsquarebig'));
-        bombs--;
+    if (game.input.space && this.bombs > 0 && this.age >= this.bombBreakAge) {
+      this.bombBreakAge = this.age + 10;
+      bombGroup.addChild(new ParticleBomb(1500, 1500, this.x - 652, this.y - 650, 40, 40, 'bombsquarebig'));
+      this.bombs--;
+      scene.bombIndicatorGroup.removeChild(scene.bombIndicatorGroup.lastChild);
     }
 
     if (this.x < -this.width/2) {
@@ -75,8 +95,13 @@ Player = Class.create(Sprite, {
       this.y = game.height - this.height/2;
       this.hitbox.y = game.height -this.hitbox.height/2;
     }
-  }
+  },
 
+  revive: function() {
+    this.reviving = true;
+    this.reviveAge = 0;
+    this.opacity = 0;
+  }
 });
 
 

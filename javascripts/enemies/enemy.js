@@ -12,6 +12,7 @@ Enemy = Class.create(Sprite, {
     this.moveToBlackHoleSpeed = 5;
     this.blackHole = undefined;
     this.blackHoleAngle = 0;
+    this.angle = 0;
   },
 
   // **********************************************************************
@@ -26,8 +27,7 @@ Enemy = Class.create(Sprite, {
 
     // Collision detection on player
     if (this.intersect(hitbox)) {
-      music.stop();
-      scene.endGame();
+      scene.playerDead();
       return;
     }
 
@@ -90,8 +90,8 @@ Enemy = Class.create(Sprite, {
   // Requires: this.speed to be set in implementation class
   // **********************************************************************
   followPlayer: function() {
-    angle = this.angleToEntity(newPlayer);
-    this.moveWithDirection(angle);
+    this.angle = this.angleToEntity(newPlayer);
+    this.moveWithDirection(this.angle);
   },
 
   moveWithDirection: function(direction) {

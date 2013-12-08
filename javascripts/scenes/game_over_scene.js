@@ -11,6 +11,8 @@ var GameOverScreen = Class.create(Scene, {
     this.addChild(bg);
 
     var img = new GameImage('gameover1', 523, 58);
+    img.x = (game.width / 2) - (this.width / 2);
+    img.y = (game.height / 2) - (this.height / 2);
     this.addChild(img);
 
     restart = new Sprite(384, 29);

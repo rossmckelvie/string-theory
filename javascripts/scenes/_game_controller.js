@@ -49,7 +49,7 @@ GameController = Class.create(Sprite, {
     }
 
     // Check to see if it's time to spawn an enemy
-    if (this.age % this.levels[this.level]['spawn_rate'] === 0)
+    if (this.age % this.levels[this.level]['spawn_rate'] === 0 && !scene.reviving)
       this.spawnEnemy();
   },
 
@@ -64,7 +64,7 @@ GameController = Class.create(Sprite, {
       if (random < cumulativeWeight) {
         var enemy = new window[this.levels[this.level]['enemies'][i][0]](corner[0], corner[1]);
 
-	enemyGroup.addChild(enemy);
+        enemyGroup.addChild(enemy);
         return;
       }
     }
