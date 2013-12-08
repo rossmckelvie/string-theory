@@ -12,6 +12,7 @@ Player = Class.create(Sprite, {
     this.moveSpeed = 5;
     this.omega = 2;
     this.hitbox = hitbox;
+    bombs = 1;
   },
 
   onenterframe: function () {
@@ -47,6 +48,12 @@ Player = Class.create(Sprite, {
     else if (game.input.down && !game.input.up) {
       this.y += this.moveSpeed;
       this.hitbox.y +=this.moveSpeed;
+    }
+
+    if (game.input.space && bombs > 0) {
+        //for (var i = 0; i < 70; i++)
+            bombGroup.addChild(new ParticleBomb(1500, 1500, this.x - 652, this.y - 650, 40, 40, 'bombsquarebig'));
+        bombs--;
     }
 
     if (this.x < -this.width/2) {

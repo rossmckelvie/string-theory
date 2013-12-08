@@ -26,12 +26,31 @@ Enemy = Class.create(Sprite, {
 
         //Particle effect on death
         for (var i = 0; i < 25; i++)
-          game.currentScene.addChild(new ParticleBlast(this.x, this.y, 90, 91));
+          game.currentScene.addChild(new ParticleBlast(4, 15, this.x, this.y, 90, 91, 'particle0'));
 
         // All done, return
         break;
       }
     }
+
+    // Collision detection on bomb
+    for (i = bombGroup.childNodes.length - 1; i >= 0; i--) {
+      bomb = bombGroup.childNodes[i];
+
+      if (this.intersect(bomb)) {
+        scene.incrementScore(this.scoreValue);
+        enemyGroup.removeChild(this);
+        sfxEnemy.play();
+
+        //Particle effect on death
+        for (var i = 0; i < 25; i++)
+          game.currentScene.addChild(new ParticleBlast(4, 15, this.x, this.y, 90, 91, 'particle0'));
+
+        // All done, return
+        break;
+      }
+    }
+
   },
 
   // **********************************************************************

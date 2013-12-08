@@ -13,6 +13,7 @@ window.onload = function() {
   game.keybind(68, 'right');
   game.keybind(87, 'up');
   game.keybind(83, 'down');
+  game.keybind(32, 'space');
 
   // Preload assets
   game.preload(
@@ -31,6 +32,8 @@ window.onload = function() {
 
     // Weapons
     'images/balls.png',
+    'images/bombsquare.png',
+    'images/bombsquarebig.png',
 
     // Enemies
     'images/square_glow.png',

@@ -45,8 +45,8 @@ var WelcomeScreen = Class.create(Scene, {
 	 //particleGroup.addChild(new Particle(800, 800, 100));
 	 //particleGroup.addChild(new ParticleStream(0, 800, 100));
 	 //particleGroup.addChild(new ParticleStream(400, 1200, 100));
-	particleGroup.addChild(new ParticleBlast(475, 350, 90, 100));
-	particleGroup.addChild(new ParticleBlast(475, 350, 90, 100));
+	particleGroup.addChild(new ParticleBlast(4, 15, 475, 350, 90, 100, 'particle0'));
+	particleGroup.addChild(new ParticleBlast(4, 15, 475, 350, 90, 100, 'particle0'));
 
       }
       start.tl.fadeIn(30);
@@ -119,9 +119,9 @@ var ParticleStream = Class.create(Sprite, {
 });
 
 var ParticleBlast = Class.create(Sprite, {
-   initialize: function(xA, yA, speed, blast) {
-      Sprite.call(this, 4, 15);
-      this.image = game.assets['images/particle0.png'];
+   initialize: function(sizeX, sizeY, xA, yA, speed, blast, img) {
+      Sprite.call(this, sizeX, sizeY);
+      this.image = game.assets['images/'+img+'.png'];
       this.x = xA;
       this.y = yA;
       this.blast = blast;
@@ -138,5 +138,29 @@ var ParticleBlast = Class.create(Sprite, {
       if (this.y < 10 || this.y > 690) {
 	 this.parentNode.removeChild(this);
       }
+   }
+});
+
+var ParticleBomb = Class.create(Sprite, {
+   initialize: function(sizeX, sizeY, xA, yA, speed, blast, img) {
+      Sprite.call(this, sizeX, sizeY);
+      this.image = game.assets['images/'+img+'.png'];
+      this.x = xA;
+      this.y = yA;
+      this.blast = blast;
+      this.scaleX = 0.0001;
+      this.scaleY = 0.0001;
+      //this.tl.moveTo(Math.floor(Math.random() * 950), Math.floor(Math.random() * 700), speed).and().fadeOut(45).and().scaleTo(100, 100);
+      this.tl.fadeOut(45).and().scaleTo(3, 40);
+      this.addEventListener(Event.ENTER_FRAME, this.update);
+   },
+
+   update: function(evt) {
+      if (this.age > this.blast) {
+  this.parentNode.removeChild(this);
+      }
+      /*if (this.y < 10 || this.y > 690) {
+   this.parentNode.removeChild(this);
+      }*/
    }
 });
