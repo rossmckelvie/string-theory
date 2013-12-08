@@ -19,7 +19,7 @@ Weapon = Class.create(Sprite, {
 
   outOfBounds: function() {
     if (this.x + this.width < 0 ||  this.x - this.width > game.width ||
-      || this.y + this.height < 0 || this.y - this.height > game.height || this.dead) {
+       this.y + this.height < 0 || this.y - this.height > game.height || this.dead) {
       newPlayer.numLasers --;
       lasers.pop(this);
       this.parentNode.removeChild(this);
