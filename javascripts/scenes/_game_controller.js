@@ -22,7 +22,8 @@ GameController = Class.create(Sprite, {
         level_end_spam: ['Triangle', 7],
         enemies: [
           ['Triangle', 50],
-          ['Square', 40]
+          ['Square', 40],
+          ['Worm', 90]
         ]
       },
 
@@ -47,7 +48,7 @@ GameController = Class.create(Sprite, {
           ['Triangle', 18],
           ['Circle', 20],
           ['Square', 40],
-          // ['Worm', 10]
+          ['Worm', 15]
         ]
       },
 
@@ -60,7 +61,7 @@ GameController = Class.create(Sprite, {
           ['Triangle', 18],
           ['Circle', 10],
           ['Square', 40],
-          // ['Worm', 25]
+          ['Worm', 25]
         ]
       },
 
@@ -72,7 +73,7 @@ GameController = Class.create(Sprite, {
           ['Triangle', 18],
           ['Circle', 30],
           ['Square', 10],
-          // ['Worm', 30]
+          ['Worm', 30]
         ]
       }
     ];

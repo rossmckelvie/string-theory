@@ -6,7 +6,7 @@ SpaceBackground = Class.create(Sprite, {
 
   this.particleSpacing = 50;
 
-  this.opacity = 0.2;
+  this.opacity = 0.5;
 
   this.numXParticles = game.width/this.particleSpacing + 1;
   this.numYParticles = game.height/this.particleSpacing + 1;

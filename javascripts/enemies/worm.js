@@ -4,18 +4,20 @@ Worm = Class.create(Enemy, // We extend the Sprite class
 	this.super_initialize("Worm", x, y, 50, 50);
 	//this.image = game.assets['images/worm_head_glow.png'];
 	this.image = game.assets['images/worm_head_glow.png'];
-	this.makeBody = 1;
+	this.makeBody = 4;
 	this.x = x;
 	this.y = y;
+	this.worm = 1;
+	this.bodyLeft = 4;
 
-	this.scoreValue = 20;
+	this.scoreValue = 10;
 	this.health = 1;
 
-	this.speed = 3;
+	this.speed = 5;
 	this.currentPathController = "followPlayer";
 
 	this.moveChoices = [
-	  [ "moveRandom", 45 ],
+	  //[ "moveRandom", 45 ],
 	  [ "followPlayer", 70 ]
 	];
 	this.moveChoicesTotalWeight = 0;
@@ -25,9 +27,9 @@ Worm = Class.create(Enemy, // We extend the Sprite class
     },
 
     onenterframe: function() {
-	if (this.makeBody > 0) {
-		game.currentScene.addChild(new WormBody(this.x, this.y, this));
+	if (this.makeBody == 4) {
 		this.makeBody--;
+		enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this));
 	}
       if (!this.super_onenterframe()) return;
 
@@ -72,35 +74,47 @@ Worm = Class.create(Enemy, // We extend the Sprite class
     }
 });
 
-WormBody = Class.create(Sprite, {
-	initialize: function(x, y, head) {
-		Sprite.call(this, 33, 33);
+WormBody = Class.create(Enemy, {
+	initialize: function(x, y, head, makeMore, topHead) {
+		this.super_initialize("WormBody", x, y, 33, 33);
 		this.image = game.assets['images/worm_tail_piece_glow.png'];
-		this.x = x - 50;
-		this.y = y - 50;
+		this.x = x - 20;
+		this.y = y - 20;
 		this.head = head;
+		this.speed = 5;
+		this.head = head;
+		this.makeBody = makeMore;
+		this.topMake = makeMore;
+		this.topHead = topHead;
+		this.wormBody = 1;
+
+		this.currentPathController = "followWorm";
 	},
 
 	onenterframe: function() {
-		angle = this.angleToEntity(this.head);
-		this.moveWithDirection(angle);
-	},
+		sfxEnemy = game.assets['sounds/deadEnemy.wav'];
+		// Collision detection on bomb, this is seperate from the one in the enemy class
+		// because otherwise there's a bug, feel free to play around with it though
+		for (i = bombGroup.childNodes.length - 1; i >= 0; i--) {
+		  bomb = bombGroup.childNodes[i];
 
-	angleToEntity: function(entity) {
-	  var xVector = (entity.x + (entity.width / 2)) - (this.x + (this.width / 2));
-	  var yVector = (entity.y + (entity.height / 2)) - (this.y + (this.height / 2));
+		  if (this.intersect(bomb)) {
+		    scene.incrementScore(this.scoreValue);
+		    enemyGroup.removeChild(this);
+		    sfxEnemy.play();
 
-	  return Math.atan2(yVector, xVector);
-	},
+		    //Particle effect on death
+		    for (var i = 0; i < 10; i++)
+		      game.currentScene.addChild(new ParticleBlast(4, 10, this.x, this.y, 90, 91, 'particle0'));
 
-	moveWithDirection: function(direction) {
-	  xSpeed = this.speed * Math.cos(direction);
-	  ySpeed = this.speed * Math.sin(direction);
-
-	  if (xSpeed === 0 && ySpeed === 0)
-	    xSpeed = 1;
-
-	  this.x += xSpeed;
-	  this.y += ySpeed;
+		    // All done, return
+		    break;
+		  }
+		}
+		if (this.makeBody == this.topMake && this.topMake != 0) {
+			this.makeBody--;
+			enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this.topHead));
+		}
+		return this[this.currentPathController](this.head);
 	}
 });
