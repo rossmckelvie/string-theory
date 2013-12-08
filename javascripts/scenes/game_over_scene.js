@@ -51,7 +51,7 @@ var GameOverScreen = Class.create(Scene, {
   onenterframe: function(evt) {
     restart.tl.fadeIn(30);
     restart.tl.fadeOut(30);
-    if (this.age % 200 == 0) {
+    if (this.age % 200 == 0 || this.age == 20) {
 	gameOverParticleGroup.addChild(new ParticleBomb(1500, 1500, -280, -400, 100, 40, 'bombsquarebig'));
 	for (var i = 0; i < 25; i++)
 	  gameOverParticleGroup.addChild(new ParticleBlast(4, 15, Math.floor(Math.random() * 950), Math.floor(Math.random() * 700), 90, 91, 'particle0'));
