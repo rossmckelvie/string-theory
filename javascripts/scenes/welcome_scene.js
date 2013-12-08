@@ -107,13 +107,16 @@ var ParticleStream = Class.create(Sprite, {
       this.y = yA;
       this.scaleX = 0.5;
       this.scaleY = 0.5;
-      this.tl.moveTo(Math.floor(Math.random() * 1000), Math.floor(Math.random() * -600), speed);
+      this.tl.moveTo(Math.floor(Math.random() * 1000), Math.floor(Math.random() * -700), speed);
       this.addEventListener(Event.ENTER_FRAME, this.update);
    },
 
    update: function(evt) {
       if (this.y < 10) {
          this.parentNode.removeChild(this);
+      }
+      if (this.age > 40) {
+	this.parentNode.removeChild(this);
       }
    }
 });
@@ -151,7 +154,7 @@ var ParticleBomb = Class.create(Sprite, {
       this.scaleX = 0.0001;
       this.scaleY = 0.0001;
       //this.tl.moveTo(Math.floor(Math.random() * 950), Math.floor(Math.random() * 700), speed).and().fadeOut(45).and().scaleTo(100, 100);
-      this.tl.fadeOut(45).and().scaleTo(3, 40);
+      this.tl.fadeOut(45).and().scaleTo(3, speed);
       this.addEventListener(Event.ENTER_FRAME, this.update);
    },
 
