@@ -18,7 +18,7 @@ Player = Class.create(Sprite, {
     this.reviving = false;
     this.reviveAge = 0;
 
-	  this.level = 4;
+	  this.weaponLevel = 4;
   },
 
   onenterframe: function () {

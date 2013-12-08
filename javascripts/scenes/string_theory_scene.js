@@ -114,31 +114,31 @@ var StringTheoryScene = Class.create(Scene, {
   checkShoot: function() {
 		if (game.touched) {
 
-			if (newPlayer.level >= 0 && this.age % 6 === 0) {
+			if (newPlayer.weaponLevel >= 0 && this.age % 6 === 0) {
 				laser = new PlayerShoot0(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
 				this.laserGroup.addChild(laser);
 			}
 
-			if (newPlayer.level >= 1 && this.age % 12 === 0) {
+			if (newPlayer.weaponLevel >= 1 && this.age % 12 === 0) {
 				laser = new PlayerShoot1(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, 1);
 				this.laserGroup.addChild(laser);
 				laser = new PlayerShoot1(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, -1);
 				this.laserGroup.addChild(laser);
 			}
 
-			if (newPlayer.level >= 2 && this.age % 10 === 0) {
+			if (newPlayer.weaponLevel >= 2 && this.age % 10 === 0) {
 				laser = new PlayerShoot2(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
 				this.laserGroup.addChild(laser);
 			}
 
-			if (newPlayer.level === 3 && this.age % 15 === 0) {
+			if (newPlayer.weaponLevel === 3 && this.age % 15 === 0) {
 				laser = new PlayerShoot3(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, this.circleGunCounter);
 				this.laserGroup.addChild(laser);
 				this.circleGunCounter ++;
 				if (this.circleGunCounter >= 8) this.circleGunCounter = 0;
 			}
 
-			if (newPlayer.level === 4 && this.age % 60 === 0) {
+			if (newPlayer.weaponLevel === 4 && this.age % 60 === 0) {
 				for (i = this.circleGunCounter2; i < 8; i += 2) {
 					laser = new PlayerShoot3(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, i);
 					this.laserGroup.addChild(laser);
