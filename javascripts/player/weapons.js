@@ -37,6 +37,7 @@ Weapon = Class.create(Sprite, {
 		this.increment = 1;
 		this.Spd = 10;
 		this.offset = 0;
+		this.damage = 1;
 		newPlayer.numLasers++;
 	},
 	
@@ -55,6 +56,7 @@ PlayerShoot0 = Class.create(Weapon, {
     this.image = game.assets['images/balls_small.png'];
 
     this.basicInit();
+	this.damage = 1;
 	this.gunDetect(x, y, mx, my);
     if (this.xSpd === 0 && this.ySpd === 0) {
       this.xSpd = this.Spd;
@@ -89,6 +91,7 @@ PlayerShoot1 = Class.create(Weapon, {
     this.image = game.assets['images/balls_small.png'];
 
     this.basicInit();
+	this.damage = 1;
 	this.offset = offset * 5 * Math.PI / 180;
 	this.gunDetect(x, y, mx, my);
 	
@@ -126,6 +129,7 @@ PlayerShoot2 = Class.create(Weapon, {
 
     this.basicInit();
 	this.frame = 50;
+	this.damage = 3;
 	this.offset = (10-20*Math.random()) * Math.PI/180;
 	this.gunDetect(x, y, mx, my);
     if (this.xSpd === 0 && this.ySpd === 0) {
@@ -160,6 +164,7 @@ PlayerShoot3 = Class.create(Weapon, {
     Sprite.call(this, 32, 32);
     this.image = game.assets['images/balls.png'];
     this.basicInit();
+	this.damage = 3;
 	this.frame = 56
 	this.gunDetect(x, y, mx, my);
 	
