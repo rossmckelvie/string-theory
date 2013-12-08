@@ -43,8 +43,7 @@ Square = Class.create(Enemy, {
     }
 
     this.frame = 0;
-    //return this[this.currentPathController]();
-    return this.moveRandom();
+    return this[this.currentPathController]();
   },
 
   moveRandom: function() {

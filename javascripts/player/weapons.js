@@ -18,36 +18,31 @@ Weapon = Class.create(Sprite, {
   },
 
   outOfBounds: function() {
-    if (this.x + this.width < 0 ||
-      this.x - this.width > game.width ||
-      this.y + this.height < 0 ||
-      this.y - this.height > game.height ||
-      (this.dead)) {
-
+    if (this.x + this.width < 0 ||  this.x - this.width > game.width ||
+      || this.y + this.height < 0 || this.y - this.height > game.height || this.dead) {
       newPlayer.numLasers --;
-    lasers.pop(this);
-    this.parentNode.removeChild(this);
-    this.destroy;
+      lasers.pop(this);
+      this.parentNode.removeChild(this);
+      this.destroy;
+    }
+  },
+
+  basicInit: function() {
+    this.dead = 0;
+    this.frame = 0;
+    this.increment = 1;
+    this.Spd = 10;
+    this.offset = 0;
+    this.damage = 1;
+    newPlayer.numLasers++;
+  },
+
+  move: function() {
+    this.x = this.x + this.xSpd;
+    this.y = this.y + this.ySpd;
+
   }
-},
-
-basicInit: function() {
-  this.dead = 0;
-  this.frame = 0;
-  this.increment = 1;
-  this.Spd = 10;
-  this.offset = 0;
-  this.damage = 1;
-  newPlayer.numLasers++;
-},
-
-move: function() {
-  this.x = this.x + this.xSpd;
-  this.y = this.y + this.ySpd;
-
-}
 });
-
 
 PlayerShoot0 = Class.create(Weapon, {
 
@@ -58,6 +53,7 @@ PlayerShoot0 = Class.create(Weapon, {
     this.basicInit();
     this.damage = 1;
     this.gunDetect(x, y, mx, my);
+
     if (this.xSpd === 0 && this.ySpd === 0) {
       this.xSpd = this.Spd;
     }
