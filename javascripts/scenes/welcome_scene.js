@@ -54,6 +54,7 @@ var WelcomeScreen = Class.create(Scene, {
     });
 
     this.addChild(bg);
+	//this.addChild(ball);
     this.addChild(particleGroup);
     this.addChild(title);
     this.addChild(start);

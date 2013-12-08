@@ -7,8 +7,7 @@ var StringTheoryScene = Class.create(Scene, {
     this.highscore = highscore;
 
     var wormGroup;
-    bg = new Sprite(game.width, game.height);
-    bg.image = game.assets['images/space.jpg'];
+    bg = new SpaceBackground();
 
     this.score = 0;
     this.reviving = false;
