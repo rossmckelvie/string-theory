@@ -45,8 +45,8 @@ var WelcomeScreen = Class.create(Scene, {
 	 //particleGroup.addChild(new Particle(800, 800, 100));
 	 //particleGroup.addChild(new ParticleStream(0, 800, 100));
 	 //particleGroup.addChild(new ParticleStream(400, 1200, 100));
-	particleGroup.addChild(new ParticleBlast(4, 15, 475, 350, 90, 100, 'particle0'));
-	particleGroup.addChild(new ParticleBlast(4, 15, 475, 350, 90, 100, 'particle0'));
+	particleGroup.addChild(new ParticleBlast(4, 15, 450, 350, 90, 100, 'particle0'));
+	particleGroup.addChild(new ParticleBlast(4, 15, 450, 350, 90, 100, 'particle0'));
 
       }
       start.tl.fadeIn(30);
