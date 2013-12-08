@@ -13,11 +13,12 @@ Player = Class.create(Sprite, {
     this.omega = 2;
     this.hitbox = hitbox;
     this.bombs = 3;
-    this.bombBreakAge = 0;
     this.lives = 3;
 
     this.reviving = false;
     this.reviveAge = 0;
+
+	  this.level = 4;
   },
 
   onenterframe: function () {
@@ -69,8 +70,7 @@ Player = Class.create(Sprite, {
       this.hitbox.y +=this.moveSpeed;
     }
 
-    if (game.input.space && this.bombs > 0 && this.age >= this.bombBreakAge) {
-      this.bombBreakAge = this.age + 10;
+    if (game.input.space && this.bombs > 0 && bombGroup.childNodes.length == 0) {
       bombGroup.addChild(new ParticleBomb(1500, 1500, this.x - 652, this.y - 650, 40, 40, 'bombsquarebig'));
       this.bombs--;
       scene.bombIndicatorGroup.removeChild(scene.bombIndicatorGroup.lastChild);

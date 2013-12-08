@@ -4,11 +4,14 @@ var GameOverScreen = Class.create(Scene, {
 
     Scene.apply(this);
     game = Game.instance;
+    gameOverParticleGroup = new Group();
 
     // Set background
     bg = new Sprite(game.width, game.height);
     bg.image = game.assets['images/space.jpg'];
     this.addChild(bg);
+
+    this.addChild(gameOverParticleGroup);
 
     var img = new GameImage('gameover1', 523, 58);
     img.x = (game.width / 2) - (this.width / 2);
@@ -48,7 +51,12 @@ var GameOverScreen = Class.create(Scene, {
   onenterframe: function(evt) {
     restart.tl.fadeIn(30);
     restart.tl.fadeOut(30);
+    if (this.age % 200 == 0) {
+	gameOverParticleGroup.addChild(new ParticleBomb(1500, 1500, -280, -400, 100, 40, 'bombsquarebig'));
+	for (var i = 0; i < 25; i++)
+	  gameOverParticleGroup.addChild(new ParticleBlast(4, 15, Math.floor(Math.random() * 950), Math.floor(Math.random() * 700), 90, 91, 'particle0'));
 
+    }
     this.addEventListener(Event.TOUCH_START, this.handleClick);
   },
 

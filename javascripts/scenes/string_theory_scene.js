@@ -21,6 +21,8 @@ var StringTheoryScene = Class.create(Scene, {
     this.enemyGroup = enemyGroup;
     bombGroup = new Group();
 
+	this.circleGunCounter = 0;
+	this.circleGunCounter2= 0;
     // Music
     music = enchant.DOMSound.load('sounds/hypermain.mp3');
     music.volume = 0.15;
@@ -77,36 +79,32 @@ var StringTheoryScene = Class.create(Scene, {
     this.addChild(gc);
   },
 
+  // onenterframe: function() {
+    // if (this.music.currentTime >= this.music.duration) {
+      // this.music.play();
+    // }
+
+    // if (game.touched && this.age % 6 === 0) {
+     // laser = new PlayerShoot(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
+     // this.laserGroup.addChild(laser);
+     // newPlayer.numLasers ++;
+    // }
+
+    // if (this.numEnemies === 0) {
+      // this.numEnemies ++;
+      // worm = new newWorm(0, 0);
+      // this.wormGroup.addChild(worm);
+    // }
+
+    // this.numEnemies = 0;
+  // },
+
   onenterframe: function() {
     if (this.music.currentTime >= this.music.duration) {
       this.music.play();
     }
 
-    if (game.touched && this.age % 6 === 0) {
-     laser = new PlayerShoot(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
-     this.laserGroup.addChild(laser);
-     newPlayer.numLasers ++;
-    }
-
-    if (this.numEnemies === 0) {
-      this.numEnemies ++;
-      worm = new newWorm(0, 0);
-      this.wormGroup.addChild(worm);
-    }
-
-    this.numEnemies = 0;
-  },
-
-  onenterframe: function() {
-    if (this.music.currentTime >= this.music.duration) {
-      this.music.play();
-    }
-
-    if (game.touched && this.age % 6 === 0) {
-      laser = new PlayerShoot(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
-      this.laserGroup.addChild(laser);
-      newPlayer.numLasers ++;
-    }
+    this.checkShoot();
 
     if (this.numEnemies === 0) {
       this.numEnemies++;
@@ -132,6 +130,48 @@ var StringTheoryScene = Class.create(Scene, {
     newPlayer.mx = e.x - gameOffsetX;
     game.touched = false;
   },
+
+  checkShoot: function() {
+		if (game.touched) {
+
+			if (newPlayer.level >= 0 && this.age % 6 === 0) {
+				laser = new PlayerShoot0(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
+				this.laserGroup.addChild(laser);
+			}
+
+			if (newPlayer.level >= 1 && this.age % 12 === 0) {
+				laser = new PlayerShoot1(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, 1);
+				this.laserGroup.addChild(laser);
+				laser = new PlayerShoot1(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, -1);
+				this.laserGroup.addChild(laser);
+			}
+
+			if (newPlayer.level >= 2 && this.age % 10 === 0) {
+				laser = new PlayerShoot2(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my);
+				this.laserGroup.addChild(laser);
+			}
+
+			if (newPlayer.level === 3 && this.age % 15 === 0) {
+				laser = new PlayerShoot3(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, this.circleGunCounter);
+				this.laserGroup.addChild(laser);
+				this.circleGunCounter ++;
+				if (this.circleGunCounter >= 8) this.circleGunCounter = 0;
+			}
+
+			if (newPlayer.level === 4 && this.age % 60 === 0) {
+				for (i = this.circleGunCounter2; i < 8; i += 2) {
+					laser = new PlayerShoot3(newPlayer.x, newPlayer.y, newPlayer.mx, newPlayer.my, i);
+					this.laserGroup.addChild(laser);
+				}
+
+				if (this.circleGunCounter2) this.circleGunCounter2 = 0;
+				else this.circleGunCounter2 = 1;
+
+			}
+
+
+		}
+	},
 
   incrementScore: function(score) {
     this.score += score;

@@ -34,15 +34,18 @@ window.onload = function() {
 
     // Weapons
     'images/balls.png',
-    'images/bombsquare.png',
+	'images/balls_small.png',
+	'images/balls_big.png',
+	'images/bombsquare.png',
     'images/bombsquarebig.png',
+
 
     // Enemies
     'images/square_glow.png',
     'images/circle_glow.png',
     'images/triangle_glow.png',
     'images/black_hole_glow.png',
-    'images/black_hole_square_glow.png',
+	'images/black_hole_square_glow.png',
 
     // Sounds
     'sounds/hyper.mp3',
