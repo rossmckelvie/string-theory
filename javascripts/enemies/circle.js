@@ -1,6 +1,6 @@
 Circle = Class.create(Enemy, {
   initialize: function(x, y) {
-    this.super_initialize(x, y, 50, 50);
+    this.super_initialize("Circle", x, y, 50, 50);
 
     this.image = game.assets['images/circle_glow.png'];
     this.frame = 0;
@@ -59,7 +59,7 @@ Circle = Class.create(Enemy, {
   },
 
   onenterframe: function() {
-    this.super_onenterframe();
+    if (!this.super_onenterframe()) return;
 
     // Move into position if needed
     if (!this.movedToStartPosition) {

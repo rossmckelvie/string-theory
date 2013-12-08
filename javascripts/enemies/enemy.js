@@ -1,11 +1,17 @@
 Enemy = Class.create(Sprite, {
-  super_initialize: function(x, y, width, height) {
+  super_initialize: function(name, x, y, width, height) {
     Sprite.call(this, width, height);
 
+    this.name = name;
+    this.absorbable = true;
     this.flickerOn = false;
     this.health = 1;
     this.speed = 1;
     this.scoreValue = 0;
+    this.movingToBlackHole = false;
+    this.moveToBlackHoleSpeed = 5;
+    this.blackHole = undefined;
+    this.blackHoleAngle = 0;
   },
 
   // **********************************************************************
@@ -84,12 +90,13 @@ Enemy = Class.create(Sprite, {
   // Requires: this.speed to be set in implementation class
   // **********************************************************************
   followPlayer: function() {
-    var xVector = (newPlayer.x + (newPlayer.width / 2)) - (this.x + (this.width / 2));
-    var yVector = (newPlayer.y + (newPlayer.height / 2)) - (this.y + (this.height / 2));
-    var angle = Math.atan2(yVector, xVector);
+    angle = this.angleToEntity(newPlayer);
+    this.moveWithDirection(angle);
+  },
 
-    xSpeed = this.speed * Math.cos(angle);
-    ySpeed = this.speed * Math.sin(angle);
+  moveWithDirection: function(direction) {
+    xSpeed = this.speed * Math.cos(direction);
+    ySpeed = this.speed * Math.sin(direction);
 
     if (xSpeed === 0 && ySpeed === 0)
       xSpeed = 1;
@@ -98,22 +105,70 @@ Enemy = Class.create(Sprite, {
     this.y += ySpeed;
   },
 
+  absorbIntoBlackHole: function(black_hole) {
+    if (this.blackHole !== undefined) return;
+
+    this.movingToBlackHole = true;
+    this.blackHole = black_hole;
+    this.blackHoleAngle = this.angleToEntity(this.blackHole);
+    this.absorbable = false;
+  },
+
   getOffsetValue: function(maxOffset) {
     return Math.floor(Math.random() * maxOffset);
   },
 
+  // **********************************************************************
+  // Returns: true if inherting class can continue with it's onenterframe,
+  //          or false if being absorbed by black hole and en route
+  // **********************************************************************
   super_onenterframe: function() {
+    // Collision detect
     this.collisionDetect();
 
+    // Check for flicker
     if (this.flickerOn && (this.startFlickerAge + 3 == this.age)) {
       this.opacity = 1;
       this.flickerOn = false;
     }
+
+    // Check for black hole absorption
+    if (this.movingToBlackHole) {
+
+      // Black hole may have been destroyed on the way
+      if (this.blackHole === undefined) {
+	this.movingToBlackHole = false;
+	return true;
+      }
+
+      // Move towards black hole
+      this.moveWithDirection(this.blackHoleAngle);
+
+      // If we're on the black hole, get absorbed
+      if (this.within(this.blackHole, 10)) {
+	this.x = -100;
+	this.y = -100;
+	this.blackHole.absorbEnemy(this);
+	this.movingToBlackHole = false;
+	enemyGroup.removeChild(this);
+      }
+    }
+
+    // If not being absorbed, or in a black hole, return true.
+    // Otherwise, Enemy controls the subclass's movement
+    return this.blackHole === undefined;
   },
 
   flicker: function() {
     this.flickerOn = true;
     this.startFlickerAge = this.age;
     this.opacity = 0.5;
+  },
+
+  angleToEntity: function(entity) {
+    var xVector = (entity.x + (entity.width / 2)) - (this.x + (this.width / 2));
+    var yVector = (entity.y + (entity.height / 2)) - (this.y + (this.height / 2));
+
+    return Math.atan2(yVector, xVector);
   }
 });
