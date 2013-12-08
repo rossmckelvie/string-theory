@@ -49,7 +49,7 @@ Square = Class.create(Enemy, {
     if (this.age % 30 === 0) {
       this.randomX = Math.floor(Math.random() * (game.width - (this.width / 2)));
       this.randomY = Math.floor(Math.random() * (game.height - (this.height / 2)));
-      this.randomAngle = Math.atan2(this.randomX, this.randomY);
+      this.randomAngle = Math.atan2(this.randomX - this.x, this.randomY - this.y);
     }
 
     this.randomXSpeed = this.speed * Math.cos(this.randomAngle);
@@ -58,12 +58,13 @@ Square = Class.create(Enemy, {
     if (this.randomXSpeed === 0 && this.randomYSpeed === 0)
       this.randomXSpeed = 1;
 
+    var newX = this.x + this.randomXSpeed + this.width;
+    var newY = this.y + this.randomYSpeed + this.height;
+
+    if (newX >= game.width || newX <= 0) this.randomXSpeed *= -1;
+    if (newY >= game.height || newY <= 0) this.randomYSpeed *= -1;
+
     this.x += this.randomXSpeed;
     this.y += this.randomYSpeed;
-
-    if (this.y < 0) this.y = 0;
-    if (this.x < 0) this.x = 0;
-    if (this.x + this.width > game.width) this.x = game.width - this.width;
-    if (this.y + this.height > game.height) this.y = game.height - this.height;
   }
 });
