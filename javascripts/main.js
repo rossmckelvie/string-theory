@@ -34,9 +34,9 @@ window.onload = function() {
 
     // Weapons
     'images/balls.png',
-	'images/balls_small.png',
-	'images/balls_big.png',
-	'images/bombsquare.png',
+    'images/balls_small.png',
+    'images/balls_big.png',
+    'images/bombsquare.png',
     'images/bombsquarebig.png',
 
 
@@ -45,7 +45,9 @@ window.onload = function() {
     'images/circle_glow.png',
     'images/triangle_glow.png',
     'images/black_hole_glow.png',
-	'images/black_hole_square_glow.png',
+    'images/black_hole_square_glow.png',
+    'images/worm_head_glow.png',
+    'images/worm_tail_piece_glow.png',
 
     // Sounds
     'sounds/hyper.mp3',
