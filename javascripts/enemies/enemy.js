@@ -35,7 +35,7 @@ Enemy = Class.create(Sprite, {
     for (i = laserGroup.childNodes.length - 1; i >= 0; i--) {
       laser = laserGroup.childNodes[i];
 
-      if (this.intersect(laser)) {
+      if (this.intersect(laser) && this.wormBody != 1) {
 
         //Particle effect on hit
         for (var i = 0; i < 10; i++)
@@ -46,19 +46,31 @@ Enemy = Class.create(Sprite, {
         laserGroup.removeChild(laser);
 
         //worm collision
-        if (this.worm == 1 && this.bodyLeft > 0) {
-          for (var i = enemyGroup.childNodes.length - 1; i >= 0; i--) {
-            enemy = enemyGroup.childNodes[i];
-            if (enemy.topHead == this) {
-              enemyGroup.removeChild(enemy);
-              this.bodyLeft--;
-              scene.incrementScore(this.scoreValue);
-              sfxEnemy.play();
-              //Particle effect on death
-              break;
+        if (this.worm === 1) {
+          if (this.bodyLeft > 0) {
+            for (var i = enemyGroup.childNodes.length - 1; i >= 0; i--) {
+              enemy = enemyGroup.childNodes[i];
+              if (enemy.topHead == this) {
+                enemyGroup.removeChild(enemy);
+                this.bodyLeft--;
+                scene.incrementScore(this.scoreValue);
+                sfxEnemy.play();
+                //Particle effect on death
+                break;
+              }
             }
           }
+          else {
+            scene.incrementScore(this.scoreValue);
+            enemyGroup.removeChild(this);
+            sfxEnemy.play();
+
+            //Particle effect on death
+            for (var i = 0; i < 10; i++)
+              game.currentScene.addChild(new ParticleBlast(4, 10, this.x, this.y, 90, 91, 'particle0'));
+          }
         }
+        //collision for everything
         else {
           // Flicker if not dead
           if (this.health > 0) {

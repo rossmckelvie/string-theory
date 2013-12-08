@@ -68,6 +68,7 @@ GameController = Class.create(Sprite, {
       {
         score: 3000,
         spawn_rate: 40,
+        level_end_spam: ['Worm', 1],
         enemies: [
           ['Triangle', 18],
           ['Circle', 30],
