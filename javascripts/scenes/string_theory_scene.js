@@ -84,12 +84,6 @@ var StringTheoryScene = Class.create(Scene, {
     }
 
     this.checkShoot();
-
-    if (this.numEnemies === 0) {
-      this.numEnemies++;
-      worm = new newWorm(0, 0);
-      this.wormGroup.addChild(worm);
-    }
   },
 
   ontouchstart: function (e) {
