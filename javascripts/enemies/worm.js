@@ -8,7 +8,7 @@ Worm = Class.create(Enemy, // We extend the Sprite class
 	this.x = x;
 	this.y = y;
 	this.worm = 1;
-	this.bodyLeft = 4;
+	this.bodyLeft = 0;
 
 	this.scoreValue = 10;
 	this.health = 1;
@@ -30,6 +30,7 @@ Worm = Class.create(Enemy, // We extend the Sprite class
 	if (this.makeBody == 4) {
 		this.makeBody--;
 		enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this));
+		this.bodyLeft++;
 	}
       if (!this.super_onenterframe()) return;
 
@@ -114,6 +115,7 @@ WormBody = Class.create(Enemy, {
 		if (this.makeBody == this.topMake && this.topMake != 0) {
 			this.makeBody--;
 			enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this.topHead));
+			this.topHead.bodyLeft++;
 		}
 		return this[this.currentPathController](this.head);
 	}
