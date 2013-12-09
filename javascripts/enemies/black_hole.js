@@ -22,6 +22,12 @@ BlackHoleSquare = Class.create(Enemy, {
 
 BlackHole = Class.create(Enemy, {
   initialize: function(x, y) {
+	
+	while (Math.abs(newPlayer.x - x) < 150 && Math.abs(newPlayer.y - y) < 150) {
+		x = game.width * Math.random();
+		y = game.height * Math.random();
+	}
+	
     this.super_initialize("BlackHole", x, y, 50, 50);
 
     this.image = game.assets['images/black_hole_glow.png'];
