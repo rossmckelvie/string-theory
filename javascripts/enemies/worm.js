@@ -29,7 +29,7 @@ Worm = Class.create(Enemy, // We extend the Sprite class
     onenterframe: function() {
 	if (this.makeBody == 4) {
 		this.makeBody--;
-		enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this));
+		enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this, 4.8));
 		this.bodyLeft++;
 	}
       if (!this.super_onenterframe()) return;
@@ -76,13 +76,13 @@ Worm = Class.create(Enemy, // We extend the Sprite class
 });
 
 WormBody = Class.create(Enemy, {
-	initialize: function(x, y, head, makeMore, topHead) {
+	initialize: function(x, y, head, makeMore, topHead, speed) {
 		this.super_initialize("WormBody", x, y, 33, 33);
 		this.image = game.assets['images/worm_tail_piece_glow.png'];
 		this.x = x - 20;
 		this.y = y - 20;
 		this.head = head;
-		this.speed = 5;
+		this.speed = speed;
 		this.head = head;
 		this.makeBody = makeMore;
 		this.topMake = makeMore;
@@ -114,7 +114,7 @@ WormBody = Class.create(Enemy, {
 		}
 		if (this.makeBody == this.topMake && this.topMake != 0) {
 			this.makeBody--;
-			enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this.topHead));
+			enemyGroup.addChild(new WormBody(this.x, this.y, this, this.makeBody, this.topHead, this.speed-=0.1));
 			this.topHead.bodyLeft++;
 		}
 		return this[this.currentPathController](this.head);
