@@ -29,6 +29,7 @@ window.onload = function() {
     'images/restart.png',
     'images/tutorial.png',
     'images/crosshair.png',
+    'images/bluecircle.png',
 
     // Player
     'images/nwomatri.png',

@@ -70,8 +70,14 @@ var StringTheoryScene = Class.create(Scene, {
     hitbox.x = game.width/2 - hitbox.width/2;
     hitbox.y = (game.height / 2) - (hitbox.height / 2);
     newPlayer = new Player(hitbox);
+    blueCirc = new Sprite(50, 50);
+    blueCirc.image = game.assets['images/bluecircle.png'];
+    blueCirc.x = game.width/2 - blueCirc.width/2;
+    blueCirc.y = game.height/2 - blueCirc.height/2;
+    blueCirc.tl.fadeOut(45).and().scaleTo(50, 150);
     this.addChild(newPlayer);
     this.addChild(hitbox);
+    this.addChild(blueCirc);
 
     // Life & Bomb Indicators
     this.drawLivesIndicator();
@@ -98,6 +104,7 @@ var StringTheoryScene = Class.create(Scene, {
     tutorial.tl.fadeOut(30);
 
     if (this.age == 300) {
+      this.removeChild(blueCirc);
       this.removeChild(tutorial);
     }
 

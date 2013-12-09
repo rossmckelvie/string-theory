@@ -21,7 +21,7 @@ var WelcomeScreen = Class.create(Scene, {
     start = new Sprite(315, 29);
     start.image = game.assets['images/start1.png'];
     start.x = game.width/2 - start.width/2;
-    start.y = 500;
+    start.y = 550;
     this.start = start;
 
     title = new Sprite(596, 49);
@@ -33,6 +33,11 @@ var WelcomeScreen = Class.create(Scene, {
     title.tl.moveTo(title.x, 100, 70);
 
     playerSprite = new PlayerSprite();
+
+    blueCirc = new Sprite(50, 50);
+    blueCirc.image = game.assets['images/bluecircle.png'];
+    blueCirc.x = game.width/2 - blueCirc.width/2;
+    blueCirc.y = game.height/2 - blueCirc.height/2;
 
     particleGroup = new Group();
 
@@ -51,11 +56,15 @@ var WelcomeScreen = Class.create(Scene, {
       }
       start.tl.fadeIn(30);
       start.tl.fadeOut(30);
+      blueCirc.tl.fadeOut(20).and().scaleTo(8, 150);
+      blueCirc.tl.fadeIn(20).and().scaleTo(0.5, 50);
+      blueCirc.rotate(2);
     });
 
     this.addChild(bg);
 	//this.addChild(ball);
     this.addChild(particleGroup);
+    this.addChild(blueCirc);
     this.addChild(title);
     this.addChild(start);
     this.addChild(playerSprite);
@@ -131,7 +140,7 @@ var ParticleBlast = Class.create(Sprite, {
       this.blast = blast;
       this.scaleX = 0.5;
       this.scaleY = 0.3;
-      this.tl.moveTo(Math.floor(Math.random() * 950), Math.floor(Math.random() * 700), speed).and().fadeOut(100);
+      this.tl.moveTo(Math.floor(Math.random() * 900), Math.floor(Math.random() * 700), speed).and().fadeOut(100);
       this.addEventListener(Event.ENTER_FRAME, this.update);
    },
 
