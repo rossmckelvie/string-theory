@@ -45,15 +45,15 @@ SpaceBackground = Class.create(Sprite, {
         {
           var Angle = Math.atan2(yVector, xVector);
 
-          this.spaceGrid[i][j].x = this.spaceGrid[i][j].homeX + (weight/distance) * Math.cos(Angle);
-          this.spaceGrid[i][j].y = this.spaceGrid[i][j].homeY + (weight/distance)* Math.sin(Angle);
+          this.spaceGrid[i][j].x += (weight/distance) * Math.cos(Angle);
+          this.spaceGrid[i][j].y += (weight/distance)* Math.sin(Angle);
         }
         else /*if(distance <= 400)*/
         {
           var Angle = Math.atan2(yVector, xVector);
           var effect = (distance / 30) * (weight/30);
-          this.spaceGrid[i][j].x = this.spaceGrid[i][j].homeX + effect * Math.cos(Angle);
-          this.spaceGrid[i][j].y = this.spaceGrid[i][j].homeY + effect * Math.sin(Angle);
+          this.spaceGrid[i][j].x += effect * Math.cos(Angle);
+          this.spaceGrid[i][j].y += effect * Math.sin(Angle);
         }
         /*else
         {
@@ -92,15 +92,11 @@ SpaceBackground = Class.create(Sprite, {
           context.strokeStyle = '#669999';
           context.stroke();
         }
+		
+		this.spaceGrid[i][j].x = this.spaceGrid[i][j].homeX;
+		this.spaceGrid[i][j].y = this.spaceGrid[i][j].homeY;
       }
     }
     this.image = this.surface;
-  },
-
-  onenterframe: function () {
-    if (this.age % 2 === 0) {
-      this.warpSpace(newPlayer.x + 96, newPlayer.y + 96, 500, 0);
-      this.drawBackground();
-    }
   }
 });
