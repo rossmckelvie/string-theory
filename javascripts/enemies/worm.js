@@ -93,6 +93,7 @@ WormBody = Class.create(Enemy, {
 	},
 
 	onenterframe: function() {
+		if (!this.super_onenterframe()) return;
 		sfxEnemy = game.assets['sounds/deadEnemy.wav'];
 		// Collision detection on bomb, this is seperate from the one in the enemy class
 		// because otherwise there's a bug, feel free to play around with it though
