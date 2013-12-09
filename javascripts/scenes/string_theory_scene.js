@@ -24,7 +24,8 @@ var StringTheoryScene = Class.create(Scene, {
     this.circleGunCounter2= 0;
 
     // Music
-    music = enchant.DOMSound.load('sounds/hypermain.mp3');
+    music = game.assets['sounds/hypermain.mp3'];
+    //music = enchant.DOMSound.load('sounds/hypermain.mp3');
     music.volume = 0.15;
     music.play();
     this.music = music;
