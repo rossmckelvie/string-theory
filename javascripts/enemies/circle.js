@@ -79,7 +79,7 @@ Circle = Class.create(Enemy, {
     }
 
     // Enrage after some time
-    if (this.age > 500 && this.frame === 0) {
+    if (this.age > 190 && this.frame === 0) {
       this.frame = 1;
       this.scoreValue *= 2;
       this.health = 1;

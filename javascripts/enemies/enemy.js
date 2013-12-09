@@ -37,13 +37,8 @@ Enemy = Class.create(Sprite, {
         laser = laserGroup.childNodes[i];
 
         if (this.intersect(laser)) {
-
-          //Particle effect on hit
-          for (var i = 0; i < 10; i++)
-            game.currentScene.addChild(new ParticleBlast(4, 10, this.x, this.y, 90, 91, 'particle0'));
-
           // Decrememnt health and remove laser
-          this.health -= laser.damange;
+          this.health -= 1;//laser.damange;
           laserGroup.removeChild(laser);
 
           //worm collision
@@ -75,6 +70,9 @@ Enemy = Class.create(Sprite, {
           else {
             // Flicker if not dead
             if (this.health > 0) {
+              //Particle effect on hit
+              for (var i = 0; i < 3; i++)
+                game.currentScene.addChild(new ParticleBlast(4, 10, this.x, this.y, 90, 91, 'particle0'));
               this.flicker();
             }
             // Die if health is now zero

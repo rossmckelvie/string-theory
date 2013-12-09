@@ -109,7 +109,7 @@ var StringTheoryScene = Class.create(Scene, {
     }
 
     this.checkShoot();
-	
+
 	if (this.age % 2 === 0) {
 		bg.warpSpace(newPlayer.x + newPlayer.width/2, newPlayer.y + newPlayer.height/2, 500, 0);
 		for (var i = 0; i < enemyGroup.childNodes.length; i++)

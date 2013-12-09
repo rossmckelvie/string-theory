@@ -29,8 +29,8 @@ GameController = Class.create(Sprite, {
       // LEVEL 1
       {
         score: 400,
-        spawn_rate: 40,
-        level_end_spam: ['Square', 5],
+        spawn_rate: 55,
+        level_end_spam: ['Square', 4],
         enemies: [
           ['Triangle', 18],
           ['Circle', 20],
@@ -41,7 +41,7 @@ GameController = Class.create(Sprite, {
       // LEVEL 2
       {
         score: 1400,
-        spawn_rate: 40,
+        spawn_rate: 50,
         level_end_spam: ['Circle', 2],
         enemies: [
           ['Triangle', 18],
@@ -55,29 +55,81 @@ GameController = Class.create(Sprite, {
       {
         score: 2200,
         spawn_rate: 40,
-        level_end_spam: ['Circle', 1],
+        level_end_spam: ['Worm', 1],
         enemies: [
-          ['Triangle', 18],
-          ['Circle', 10],
+          ['Circle', 20],
           ['Square', 40],
-	  ['Worm', 25],
-	  ['BlackHole', 5]
+	        ['Worm', 35]
         ]
       },
 
       // LEVEL 4
       {
         score: 3000,
-        spawn_rate: 40,
-        level_end_spam: ['Worm', 1],
+        spawn_rate: 35,
+        level_end_spam: ['BlackHole', 1],
         enemies: [
-          ['Triangle', 18],
+          ['Triangle', 30],
           ['Circle', 30],
-	  ['Square', 15],
-	  ['Worm', 30],
-	  ['BlackHole', 10]
+	        ['Square', 40],
+	        ['Worm', 40]
         ]
-      }
+      },
+      // LEVEL 5
+      {
+        score: 4000,
+        spawn_rate: 35,
+        level_end_spam: ['Square', 4],
+        enemies: [
+          ['Triangle', 30],
+          ['Square', 40],
+          ['Circle', 30],
+        ]
+      },
+        // LEVEL 6
+        {
+          score: 5000,
+          spawn_rate: 30,
+          level_end_spam: ['Triangle', 7],
+          enemies: [
+            ['Circle', 30],
+            ['Square', 40],
+            ['Worm', 30]
+          ]
+        },
+        // LEVEL 7
+        {
+          score: 6000,
+          spawn_rate: 25,
+          level_end_spam: ['Circle', 2],
+          enemies: [
+            ['Square', 40],
+            ['Circle', 30],
+            ['BlackHole', 10]
+          ]
+        },
+        // LEVEL 9
+        {
+          score: 8000,
+          spawn_rate: 20,
+          level_end_spam: ['Worm', 1],
+          enemies: [
+            ['Square', 50],
+            ['Circle', 30],
+            ['BlackHole', 15]
+          ]
+        },
+        // LEVEL 10
+        {
+          score: 10000,
+          spawn_rate: 15,
+          level_end_spam: ['Triangle', 7],
+          enemies: [
+            ['Circle', 20],
+            ['Square', 30],
+            ['Worm', 40]
+          ]
+        }
     ];
 
     this.corners = [
@@ -108,7 +160,8 @@ GameController = Class.create(Sprite, {
         this.level--;
         this.maxLevel = true;
       } else {
-        newPlayer.weaponLevel++;
+        if (newPlayer.weaponLevel < 4)
+          newPlayer.weaponLevel++;
       }
     }
 
