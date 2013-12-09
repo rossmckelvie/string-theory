@@ -116,7 +116,7 @@ var StringTheoryScene = Class.create(Scene, {
 		for (var i = 0; i < enemyGroup.childNodes.length; i++)
 		{
 			var enemy = enemyGroup.childNodes[i];
-			bg.warpSpace(enemy.x + enemy.width/2, enemy.y + enemy.height/2, 500, 0);
+			bg.warpSpace(enemy.x + enemy.width/2, enemy.y + enemy.height/2, enemy.weight, 0);
 		}
 		bg.drawBackground();
 	}

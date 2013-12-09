@@ -106,7 +106,7 @@ BlackHole = Class.create(Enemy, {
     }
 
     // Pulse if needed
-    if (this.enemiesInside > 0)
+    if (this.enemiesInside >= 0)
       this.pulse();
   },
 
@@ -114,7 +114,7 @@ BlackHole = Class.create(Enemy, {
     this.enemiesInside++;
     this.health += enemy.health;
     this.scoreValue += enemy.scoreValue;
-    this.pulseRate -= this.health;
+    this.pulseRate = Math.floor(6 - 5*(this.health/15));
 
     if (this.health === 15)
       this.explode();
@@ -127,6 +127,7 @@ BlackHole = Class.create(Enemy, {
 
       this.frame += this.pulseDirection;
     }
+	this.weight = this.weight + 50*(this.health/15)*this.pulseDirection;
   },
 
   explode: function() {

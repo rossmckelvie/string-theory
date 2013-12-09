@@ -13,6 +13,7 @@ Enemy = Class.create(Sprite, {
     this.blackHole = undefined;
     this.blackHoleAngle = 0;
     this.angle = 0;
+	this.weight = 300;
   },
 
   // **********************************************************************
