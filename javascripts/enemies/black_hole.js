@@ -122,7 +122,7 @@ BlackHole = Class.create(Enemy, {
     this.scoreValue += enemy.scoreValue;
     this.pulseRate = Math.floor(6 - 5*(this.health/15));
 
-    if (this.health === 15)
+    if (this.health >= 15)
       this.explode();
   },
 
