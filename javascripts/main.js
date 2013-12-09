@@ -57,7 +57,8 @@ window.onload = function() {
     'sounds/hyper.mp3',
     'sounds/hypermain.mp3',
     'sounds/select.wav',
-    'sounds/deadEnemy.wav'
+    'sounds/deadEnemy.wav',
+    'sounds/playerHit.wav'
    );
 
   // Set scenes and start game

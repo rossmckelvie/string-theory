@@ -27,6 +27,7 @@ Enemy = Class.create(Sprite, {
 
     // Collision detection on player
     if (this.intersect(hitbox)) {
+      game.assets['sounds/playerHit.wav'].play();
       scene.playerDead();
       return;
     }

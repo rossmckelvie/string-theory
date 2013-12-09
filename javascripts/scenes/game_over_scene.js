@@ -61,6 +61,7 @@ var GameOverScreen = Class.create(Scene, {
   },
 
   handleClick: function() {
+    game.assets['sounds/select.wav'].play();
     Game.instance.replaceScene(new StringTheoryScene(this.highscore));
   }
 });
