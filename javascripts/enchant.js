@@ -5187,11 +5187,9 @@ enchant.WebAudioSound = enchant.Class.create(enchant.EventTarget, {
     },
     currentTime: {
         get: function() {
-            window.console.log('currentTime is not allowed');
             return this._currentTime;
         },
         set: function(time) {
-            window.console.log('currentTime is not allowed');
             this._currentTime = time;
         }
     }

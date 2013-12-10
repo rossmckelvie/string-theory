@@ -53,7 +53,6 @@ Square = Class.create(Enemy, {
       this.randomX = Math.floor(Math.random() * (game.width - (this.width / 2)));
       this.randomY = Math.floor(Math.random() * (game.height - (this.height / 2)));
       this.randomAngle = Math.atan2(this.randomX - this.x, this.randomY - this.y);
-      console.log("random angle", this.randomAngle)
     }
 
     this.randomXSpeed = this.speed * Math.cos(this.randomAngle);
