@@ -5,8 +5,8 @@ var WelcomeScreen = Class.create(Scene, {
     Scene.apply(this);
     game = Game.instance;
 
-    music = game.assets['sounds/hyper.mp3'];
-    //music = enchant.DOMSound.load('sounds/hyper.mp3');
+    //music = game.assets['sounds/hyper.mp3'];
+    music = enchant.DOMSound.load('sounds/hyper.mp3');
     music.volume = 0.15;
     music.play();
     this.music = music;
